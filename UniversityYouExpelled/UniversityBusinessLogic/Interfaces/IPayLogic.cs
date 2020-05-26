@@ -6,10 +6,10 @@ using UniversityBusinessLogic.ViewModels;
 
 namespace UniversityBusinessLogic.Interfaces
 {
-    public interface IEducationLogic
+   public interface IPayLogic
     {
-        List<EducationViewModel> Read(EducationBindingModel model);
-        void CreateOrUpdate(EducationBindingModel model);
-        void Delete(EducationBindingModel model);
+        List<PayViewModel> Read(PayBindingModel model);
+        void CreateOrUpdate(PayBindingModel model);
+        void Delete(PayBindingModel model);
     }
 }

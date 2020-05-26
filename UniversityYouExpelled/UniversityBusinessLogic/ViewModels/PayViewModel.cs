@@ -10,7 +10,7 @@ namespace UniversityBusinessLogic.ViewModels
     public class PayViewModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         [DataMember]
         public int EducationId { get; set; }
         [DataMember]

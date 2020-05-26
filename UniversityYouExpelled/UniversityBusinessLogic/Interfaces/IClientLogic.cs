@@ -6,10 +6,10 @@ using UniversityBusinessLogic.ViewModels;
 
 namespace UniversityBusinessLogic.Interfaces
 {
-    public interface IEducationLogic
+    public interface IClientLogic
     {
-        List<EducationViewModel> Read(EducationBindingModel model);
-        void CreateOrUpdate(EducationBindingModel model);
-        void Delete(EducationBindingModel model);
+        List<ClientViewModel> Read(ClientBindingModel model);
+        void CreateOrUpdate(ClientBindingModel model);
+        void Delete(ClientBindingModel model);
     }
 }

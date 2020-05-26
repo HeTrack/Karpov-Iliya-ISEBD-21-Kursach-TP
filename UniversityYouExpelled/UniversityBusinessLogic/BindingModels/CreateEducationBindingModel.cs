@@ -4,18 +4,17 @@ using System.Runtime.Serialization;
 using System.Text;
 
 namespace UniversityBusinessLogic.BindingModels
-{
-    public class CreateEducationBindingModel
-    {
+{   
         [DataContract]
-        public class CreateTravelBindingModel
+        public class CreateEducationBindingModel
         {
             [DataMember]
             public int EducationId { get; set; }
             [DataMember]
             public int ClientId { get; set; }
             [DataMember]
-            public decimal EducationCost { get; set; }
+            public decimal EdCost { get; set; }
+           // [DataMember]
+            //public bool IsMay { get; set; }
         }
     }
-}
