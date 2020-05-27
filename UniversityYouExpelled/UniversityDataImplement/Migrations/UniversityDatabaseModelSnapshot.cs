@@ -190,7 +190,7 @@ namespace UniversityDataBaseImplement.Migrations
                         .IsRequired();
 
                     b.HasOne("UniversityDatabaseImplement.Models.Education", "Education")
-                        .WithMany("EducationCourse")
+                        .WithMany("EducationCourses")
                         .HasForeignKey("EducationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

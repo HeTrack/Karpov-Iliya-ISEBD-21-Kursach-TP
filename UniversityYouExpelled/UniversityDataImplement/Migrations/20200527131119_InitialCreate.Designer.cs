@@ -10,7 +10,7 @@ using UniversityDatabaseImplement;
 namespace UniversityDataBaseImplement.Migrations
 {
     [DbContext(typeof(UniversityDatabase))]
-    [Migration("20200527125814_InitialCreate")]
+    [Migration("20200527131119_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -192,7 +192,7 @@ namespace UniversityDataBaseImplement.Migrations
                         .IsRequired();
 
                     b.HasOne("UniversityDatabaseImplement.Models.Education", "Education")
-                        .WithMany("EducationCourse")
+                        .WithMany("EducationCourses")
                         .HasForeignKey("EducationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
