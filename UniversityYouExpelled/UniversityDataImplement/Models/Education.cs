@@ -22,10 +22,10 @@ namespace UniversityDatabaseImplement.Models
         public int PaidSum { get; set; }
         public PayStatus Status { get; set; }
         [ForeignKey("EducationId")]
-        public virtual List<EducationCourse> EducationCourse { get; set; }
+        public virtual List<EducationCourse> EducationCourses { get; set; }
         [Required]
         [ForeignKey("EducationId")]
-        public virtual List<Pay> Pays { get; set; }
+        public List<Pay> Pays { get; set; }
         public Client Client { get; set; }
     }
 }
