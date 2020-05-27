@@ -12,6 +12,8 @@ namespace UniversityBusinessLogic.ViewModels
         [DataMember]
         public int? Id { get; set; }
         [DataMember]
+        public int ClientId { get; set; }
+        [DataMember]
         public int EducationId { get; set; }
         [DataMember]
         [DisplayName("Дата оплаты")]

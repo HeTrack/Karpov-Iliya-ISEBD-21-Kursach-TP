@@ -9,8 +9,8 @@ namespace UniversityDatabaseImplement.Models
 {
   public  class Pay
     {
-        [Required]
-        public int? Id { get; set; }
+        public int Id { get; set; }
+        public int ClientId { get; set; }
         [Required]
         public int EducationId { get; set; }
         [Required]
@@ -18,5 +18,6 @@ namespace UniversityDatabaseImplement.Models
         [Required]
         public decimal Sum { get; set; }
         public virtual Education Education { get; set; }
+        public virtual Client Client { get; set; }
     }
 }

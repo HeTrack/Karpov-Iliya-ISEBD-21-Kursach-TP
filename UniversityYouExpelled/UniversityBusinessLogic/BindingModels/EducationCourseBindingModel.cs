@@ -13,7 +13,15 @@ namespace UniversityBusinessLogic.BindingModels
         public int? EducationId { get; set; }
         [DataMember]
         public int CourseId { get; set; }
-        [DataMember]       
+        [DataMember]
+        public string LecturerFIO { get; set; }
+        [DataMember]
+        public string CourseName { get; set; }
+        [DataMember]
+        public DateTime StartCourse { get; set; }
+        [DataMember]
+        public decimal Cost { get; set; }
+        [DataMember]
         public int Count { get; set; }
     }
 }

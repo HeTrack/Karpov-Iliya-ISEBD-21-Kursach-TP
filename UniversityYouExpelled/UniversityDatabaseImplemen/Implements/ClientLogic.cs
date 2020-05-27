@@ -36,8 +36,9 @@ namespace UniversityDatabaseImplement.Implements
                 }               
                 element.Login = model.Login;
                 element.ClientFIO = model.ClientFIO;
+                element.Email = model.Email;
                 element.Phone = model.Phone;
-                element.BlockStatus = false;
+                element.DataRegistration = model.DateRegistration;
                 element.Password = model.Password;
                 context.SaveChanges();
             }
@@ -75,7 +76,9 @@ namespace UniversityDatabaseImplement.Implements
                     Login = rec.Login,
                     ClientFIO = rec.ClientFIO,
                     Password = rec.Password,
+                    Email = rec.Email,
                     Phone = rec.Phone,
+                    DateRegistration = rec.DataRegistration,
                     BlockStatus = rec.BlockStatus
                 })
                 .ToList();

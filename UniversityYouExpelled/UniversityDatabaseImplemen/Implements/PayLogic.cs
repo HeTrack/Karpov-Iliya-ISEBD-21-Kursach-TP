@@ -16,28 +16,25 @@ namespace UniversityDatabaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Pay element = context.Pays.FirstOrDefault(rec => rec.Id != model.Id);
-                if (element != null)
-                {
-                    throw new Exception("Уже есть платеж  с таким названием");
-                }
+                Pay elem = model.Id.HasValue ? null : new Pay();
                 if (model.Id.HasValue)
                 {
-                    element = context.Pays.FirstOrDefault(rec => rec.Id ==
-                   model.Id);
-                    if (element == null)
+                    elem = context.Pays.FirstOrDefault(rec => rec.Id ==
+                       model.Id);
+                    if (elem == null)
                     {
                         throw new Exception("Элемент не найден");
                     }
                 }
                 else
                 {
-                    element = new Pay();
-                    context.Pays.Add(element);
+                    elem= new Pay();
+                    context.Pays.Add(elem);
                 }
-                element.EducationId = model.EducationId;
-                element.Sum = model.Sum;
-                element.PayDate = model.PayDate;
+                elem.EducationId = model.EducationId;
+                elem.ClientId = model.ClientId;
+                elem.Sum = model.Sum;
+                elem.PayDate = model.PayDate;
                 context.SaveChanges();
             }
         }
@@ -45,11 +42,11 @@ namespace UniversityDatabaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Pay element = context.Pays.FirstOrDefault(rec => rec.Id ==
+                Pay elem = context.Pays.FirstOrDefault(rec => rec.Id ==
                model.Id);
-                if (element != null)
+                if (elem != null)
                 {
-                    context.Pays.Remove(element);
+                    context.Pays.Remove(elem);
                     context.SaveChanges();
                 }
                 else
@@ -58,15 +55,17 @@ namespace UniversityDatabaseImplement.Implements
                 }
             }
         }
+
         public List<PayViewModel> Read(PayBindingModel model)
         {
             using (var context = new UniversityDatabase())
             {
                 return context.Pays
-                .Where(rec => model == null || rec.Id == model.Id)
+                .Where(rec => model == null || rec.Id == model.Id || rec.EducationId.Equals(model.EducationId))
                 .Select(rec => new PayViewModel
                 {
                     Id = rec.Id,
+                    ClientId = rec.ClientId,
                     PayDate = rec.PayDate,
                     EducationId = rec.EducationId,
                     Sum = rec.Sum

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UniversityBusinessLogic.ViewModels
 {
-    class CourseViewModel
+   public class CourseViewModel
     {
         public int Id { get; set; }
         [DisplayName("Название курса")]

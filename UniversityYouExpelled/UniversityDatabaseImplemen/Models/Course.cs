@@ -19,7 +19,5 @@ namespace UniversityDatabaseImplement.Models
         public DateTime StartCourse { get; set; }
         [Required]
         public decimal Cost { get; set; }
-        [ForeignKey("CourseId")]
-        public virtual List<EducationCourse> EducationCourses { get; set; }
     }
 }

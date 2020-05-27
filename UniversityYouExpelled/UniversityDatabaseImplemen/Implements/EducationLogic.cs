@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniversityBusinessLogic.BindingModels;
@@ -17,50 +18,51 @@ namespace UniversityDatabaseImplement.Implements
                 {
                     try
                     {
-                        Education element = context.Educations.FirstOrDefault(rec =>
-                            rec.YearEd == model.YearEd && rec.Id != model.Id);
-                        if (element != null)
-                        {
-                            throw new Exception("Уже есть такое обучение");
-                        }
+                       Education elem = model.Id.HasValue ? null : new Education();
                         if (model.Id.HasValue)
                         {
-                            element = context.Educations.FirstOrDefault(rec => rec.Id ==
+                            elem = context.Educations.FirstOrDefault(rec => rec.Id ==
                            model.Id);
-                            if (element == null)
+                            if (elem == null)
                             {
                                 throw new Exception("Элемент не найден");
                             }
+                            elem.ClientId = model.ClientId;
+                            elem.EdCreate = model.EdCreate;
+                            elem.YearEd = model.YearEd;
+                            elem.StatusEducation = model.StatusEducation;
+                            elem.EdCost = model.EdCost;
+                            elem.Status = model.Status;
+                            context.SaveChanges();
                         }
                         else
                         {
-                            element = new Education();
-                            context.Educations.Add(element);
-                        }
-                        element.Id = model.Id;
-                        element.EdCreate = model.EdCreate;
-                        element.StatusEducation = model.StatusEducation;
-                        element.ClientId = model.ClientId.Value;
-                        element.YearEd = model.YearEd;
-                        element.EdCost = model.EdCost;
-                        element.Status = model.Status;
-                        var groupCourses = model.EducationCourses
-                        .GroupBy(rec => rec.CourseId)
-                        .Select(rec => new
-                        {
-                            CourseId = rec.Key,
-                            Count = rec.Sum(r => r.Count)
-                        });
-                        foreach (var groupCourse in groupCourses)
-                        {
-                           var EducationCourse = new EducationCourse
+                            elem.ClientId = model.ClientId;
+                            elem.EdCreate = model.EdCreate;
+                            elem.YearEd = model.YearEd;
+                            elem.StatusEducation = model.StatusEducation;
+                            elem.EdCost = model.EdCost;
+                            elem.Status = model.Status;
+                            context.Educations.Add(elem);
+                            context.SaveChanges();
+                            var courses = model.EducationCourses
+                               .GroupBy(rec => rec.CourseId)
+                               .Select(rec => new
+                               {
+                                   CourseId = rec.Key,
+                                   Count = rec.Sum(r => r.Count)
+                               });
+
+                            foreach (var course in courses)
                             {
-                                EducationId = element.Id,
-                                CourseId = groupCourse.CourseId,
-                                Count = groupCourse.Count
-                            };
-                            context.EducationCourses.Add(EducationCourse);
-                            context.SaveChanges();                         
+                                context.EducationCourses.Add(new EducationCourse
+                                {
+                                    EducationId = elem.Id,
+                                    CourseId = course.CourseId,
+                                    Count = course.Count
+                                });
+                                context.SaveChanges();
+                            }
                         }
                         transaction.Commit();
                     }
@@ -72,35 +74,20 @@ namespace UniversityDatabaseImplement.Implements
                 }
             }
         }
-
         public void Delete(EducationBindingModel model)
         {
             using (var context = new UniversityDatabase())
             {
-                using (var transaction = context.Database.BeginTransaction())
+                Education elem = context.Educations.FirstOrDefault(rec => rec.Id == model.Id.Value);
+
+                if (elem != null)
                 {
-                    try
-                    {
-                        context.EducationCourses.RemoveRange(context.EducationCourses.Where(rec =>
-                        rec.EducationId == model.Id));
-                        Education element = context.Educations.FirstOrDefault(rec => rec.Id
-                        == model.Id);
-                        if (element != null)
-                        {
-                            context.Educations.Remove(element);
-                            context.SaveChanges();
-                        }
-                        else
-                        {
-                            throw new Exception("Элемент не найден");
-                        }
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        throw;
-                    }
+                    context.Educations.Remove(elem);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Элемент не найден");
                 }
             }
         }
@@ -108,30 +95,46 @@ namespace UniversityDatabaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                return context.Educations.Where(rec => model == null
-                    || rec.Id == model.Id && model.Id.HasValue)
+                return context.Educations.Where(rec => rec.Id == model.Id || (rec.ClientId == model.ClientId))
                 .Select(rec => new EducationViewModel
                 {
                     Id = rec.Id,
                     ClientId = rec.ClientId,
                     ClientFIO = rec.Client.ClientFIO,
-                    YearEd = rec.YearEd,
+                     YearEd= rec.YearEd,
                     EdCreate = rec.EdCreate,
                     StatusEducation = rec.StatusEducation,
                     EdCost = rec.EdCost,
+                    PaidSum = context.Pays.Where(recP => recP.EducationId == recP.Id).Select(recP => recP.Sum).Sum(),
                     Status = rec.Status,
-                    EducationCourses = context.EducationCourses
-                     .Where(recEC => recEC.EducationId == rec.Id)
-                     .Select(recEC => new EducationCourseViewModel
-                     {
-                         Id = recEC.Id,
-                         EducationId = recEC.EducationId,
-                         CourseId = recEC.CourseId,                       
-                         Count = recEC.Count
-                     })
-                        .ToList()
+                    EducationCourses = GetEdCourse(rec)
                 })
-                .ToList();
+            .ToList();
+            }
+        }
+        public static List<EducationCourseViewModel> GetEdCourse(Education ed)
+        {
+            using (var context = new UniversityDatabase())
+            {
+                var EducationCourses = context.EducationCourses
+                    .Where(rec => rec.EducationId == ed.Id)
+                    .Include(rec => rec.Course)
+                    .Select(rec => new EducationCourseViewModel
+                    {
+                        Id = rec.Id,
+                        EducationId = rec.EducationId,
+                        CourseId = rec.CourseId,
+                        Count = rec.Count
+                    }).ToList();
+                foreach (var course in EducationCourses)
+                {
+                    var courseData = context.Courses.Where(rec => rec.Id == course.CourseId).FirstOrDefault();
+                    course.LecturerFIO = courseData.LecturerFIO;
+                    course.CourseName = courseData.CourseName;                  
+                    course.StartCourse = courseData.StartCourse;
+                    course.Cost = courseData.Cost;
+                }
+                return EducationCourses;
             }
         }
     }

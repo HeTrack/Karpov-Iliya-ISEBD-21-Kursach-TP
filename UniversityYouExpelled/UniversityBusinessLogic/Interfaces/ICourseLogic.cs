@@ -6,11 +6,8 @@ using UniversityBusinessLogic.ViewModels;
 
 namespace UniversityBusinessLogic.Interfaces
 {
-    interface ICourseLogic
+   public interface ICourseLogic
     {
-
-        List<CourseViewModel> Read(CourseBindingModel model);
-        void CreateOrUpdate(CourseBindingModel model);
-        void Delete(CourseBindingModel model);
+        List<CourseViewModel> Read(CourseBindingModel model);   
     }
 }
