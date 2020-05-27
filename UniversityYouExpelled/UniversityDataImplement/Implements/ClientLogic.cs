@@ -16,30 +16,30 @@ namespace UniversityDatabaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Client element = context.Clients.FirstOrDefault(rec => rec.Login == model.Login && rec.Id != model.Id);
-                if (element != null)
+                Client elem = context.Clients.FirstOrDefault(rec => rec.Login == model.Login && rec.Id != model.Id);
+                if (elem != null)
                 {
                     throw new Exception("Уже есть клиент с таким логином");
                 }
                 if (model.Id.HasValue)
                 {
-                    element = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
-                    if (element == null)
+                    elem = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
+                    if (elem == null)
                     {
                         throw new Exception("Элемент не найден");
                     }
                 }
                 else
                 {
-                    element = new Client();
-                    context.Clients.Add(element);
+                    elem = new Client();
+                    context.Clients.Add(elem);
                 }               
-                element.Login = model.Login;
-                element.ClientFIO = model.ClientFIO;
-                element.Email = model.Email;
-                element.Phone = model.Phone;
-                element.DataRegistration = model.DateRegistration;
-                element.Password = model.Password;
+                elem.Login = model.Login;
+                elem.ClientFIO = model.ClientFIO;
+                elem.Email = model.Email;
+                elem.Phone = model.Phone;
+                elem.DataRegistration = model.DateRegistration;
+                elem.Password = model.Password;
                 context.SaveChanges();
             }
         }
@@ -47,11 +47,11 @@ namespace UniversityDatabaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Client element = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
+                Client elem = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
 
-                if (element != null)
+                if (elem != null)
                 {
-                    context.Clients.Remove(element);
+                    context.Clients.Remove(elem);
                     context.SaveChanges();
                 }
                 else
