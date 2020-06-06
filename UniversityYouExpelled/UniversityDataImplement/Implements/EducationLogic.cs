@@ -101,7 +101,7 @@ namespace UniversityDatabaseImplement.Implements
                     Id = rec.Id,
                     ClientId = rec.ClientId,
                     ClientFIO = rec.Client.ClientFIO,
-                     YearEd= rec.YearEd,
+                    YearEd= rec.YearEd,
                     EdCreate = rec.EdCreate,
                     StatusEducation = rec.StatusEducation,
                     EdCost = rec.EdCost,

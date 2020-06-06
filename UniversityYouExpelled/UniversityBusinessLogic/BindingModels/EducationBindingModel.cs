@@ -24,7 +24,9 @@ namespace UniversityBusinessLogic.BindingModels
         [DataMember]
         public decimal PaidSum { get; set; }
         [DataMember]
-        public PayStatus Status { get; set; }
+        public decimal Remain { get; set; }
+        [DataMember]
+        public EducationStatus Status { get; set; }
         [DataMember]
         public List<EducationCourseBindingModel> EducationCourses { get; set; }
     }

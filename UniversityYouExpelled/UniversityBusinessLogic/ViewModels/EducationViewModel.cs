@@ -11,7 +11,7 @@ namespace UniversityBusinessLogic.ViewModels
     public class EducationViewModel
     {
         [DataMember]
-        public int? Id { get; set; }
+        public int Id { get; set; }
         [DataMember]
         public int? ClientId { get; set; }
         [DataMember]
@@ -31,7 +31,7 @@ namespace UniversityBusinessLogic.ViewModels
         public decimal EdCost { get; set; }
         [DataMember]
         [DisplayName("Статус")]
-        public PayStatus Status { get; set; }
+        public EducationStatus Status { get; set; }
         [DataMember]
         [DisplayName("Оплаченная сумма")]
         public decimal PaidSum { get; set; }

@@ -20,7 +20,7 @@ namespace UniversityDatabaseImplement.Models
         public decimal EdCost { get; set; }
         [Required]
         public int PaidSum { get; set; }
-        public PayStatus Status { get; set; }
+        public EducationStatus Status { get; set; }
         [ForeignKey("EducationId")]
         public virtual List<EducationCourse> EducationCourses { get; set; }
         [Required]
