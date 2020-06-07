@@ -23,7 +23,7 @@ namespace UniversityWebClient.Models
 
         [Required(ErrorMessage = "Пожалуйста, введите номер телефона")]
         [RegularExpression(@"^([\+]?(?:00)?[0-9]{1,3}[\s.-]?[0-9]{1,12})([\s.-]?[0-9]{1,4}?)$", ErrorMessage = "Вы ввели некорректный номер телефона")]
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
         [Required(ErrorMessage = "Пожалуйста, введите ФИО")]
         public string ClientFIO { get; set; }
     }

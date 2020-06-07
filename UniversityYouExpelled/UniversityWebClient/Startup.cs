@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UniversityBusinessLogic.BusinessLogic;
+using UniversityBusinessLogic.Interfaces;
+using UniversityDataBaseImplement.Implements;
 
 namespace UniversityWebClient
 {
@@ -24,6 +27,11 @@ namespace UniversityWebClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IClientLogic, ClientLogic>();
+            services.AddTransient<IPayLogic, PayLogic>();
+            services.AddTransient<IEducationLogic, EducationLogic>();
+            services.AddTransient<ICourseLogic, CourseLogic>();
+            services.AddTransient<ReportLogic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

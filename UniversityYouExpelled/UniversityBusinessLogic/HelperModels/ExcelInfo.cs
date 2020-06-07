@@ -5,7 +5,7 @@ using UniversityBusinessLogic.ViewModels;
 
 namespace UniversityBusinessLogic.HelperModels
 {
-    public class EcxelInfo
+    public class ExcelInfo
     {
         public string FileName { get; set; }
         public string Title { get; set; }

@@ -24,6 +24,5 @@ namespace UniversityBusinessLogic.ViewModels
         [DataMember]
         public decimal Cost { get; set; }
         [DisplayName("Количество")]
-        public int Count { get; set; }
     }
 }

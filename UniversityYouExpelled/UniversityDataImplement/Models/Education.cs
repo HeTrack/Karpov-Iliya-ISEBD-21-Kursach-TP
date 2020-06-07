@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UniversityBusinessLogic.Enums;
 
-namespace UniversityDatabaseImplement.Models
+namespace UniversityDataBaseImplement.Models
 {
     public class Education
     {

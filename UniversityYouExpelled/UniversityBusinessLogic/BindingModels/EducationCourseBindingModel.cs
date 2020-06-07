@@ -21,7 +21,5 @@ namespace UniversityBusinessLogic.BindingModels
         public DateTime StartCourse { get; set; }
         [DataMember]
         public decimal Cost { get; set; }
-        [DataMember]
-        public int Count { get; set; }
     }
 }

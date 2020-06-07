@@ -36,6 +36,9 @@ namespace UniversityBusinessLogic.ViewModels
         [DisplayName("Оплаченная сумма")]
         public decimal PaidSum { get; set; }
         [DataMember]
+        [DisplayName("Оcтаток")]
+        public decimal Remain { get; set; }
+        [DataMember]
         public List<EducationCourseViewModel> EducationCourses { get; set; }
     }
 }

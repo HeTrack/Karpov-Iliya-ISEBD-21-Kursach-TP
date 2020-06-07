@@ -5,10 +5,11 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using UniversityBusinessLogic.BindingModels;
+using UniversityBusinessLogic.HelperModels;
 using UniversityBusinessLogic.Interfaces;
 using UniversityBusinessLogic.ViewModels;
 
-namespace UniversityBusinessLogic.BisinessLogic
+namespace UniversityBusinessLogic.BusinessLogic
 {
     public class ReportLogic
     {
@@ -60,23 +61,23 @@ namespace UniversityBusinessLogic.BisinessLogic
         }
         public void SaveEducationCoursesToWordFile(string fileName, EducationViewModel education, string email)
         {
-            string title = "Список курсов по " + education.YearEd + " году обучения"
+            string title = "Список курсов по " + education.YearEd + " году обучения";
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = fileName,
                 Title = title,
-                Сourses = GetEducationCourses(education)
+                Courses = GetEducationCourses(education)
             });
             SendMail(email, fileName, title);
         }
         public void SaveEducationCoursesToExcelFile(string fileName, EducationViewModel education, string email)
         {
-            string title = "Список курсов по " + education.YearEd + " году обучения"
+            string title = "Список курсов по " + education.YearEd + " году обучения";
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = fileName,
                 Title = title,
-                Сourses = GetEducationCourses(education)
+                Courses = GetEducationCourses(education)
             });
             SendMail(email, fileName, title);
         }

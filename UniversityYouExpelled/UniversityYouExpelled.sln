@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityWebClient", "Univ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityBusinessLogic", "UniversityBusinessLogic\UniversityBusinessLogic.csproj", "{07B50087-D393-413F-A7A6-83C9E78048D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityDataBaseImplement", "UniversityDataImplement\UniversityDataBaseImplement.csproj", "{158E29BB-5BDD-4408-98BC-D2A3ABE5D880}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityDataBaseImplement", "UniversityDataImplement\UniversityDataBaseImplement.csproj", "{158E29BB-5BDD-4408-98BC-D2A3ABE5D880}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

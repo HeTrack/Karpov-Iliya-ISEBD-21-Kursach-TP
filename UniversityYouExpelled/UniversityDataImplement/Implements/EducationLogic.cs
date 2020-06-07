@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniversityBusinessLogic.BindingModels;
+using UniversityBusinessLogic.Interfaces;
 using UniversityBusinessLogic.ViewModels;
-using UniversityDatabaseImplement.Models;
+using UniversityDataBaseImplement.Models;
 
-namespace UniversityDatabaseImplement.Implements
+namespace UniversityDataBaseImplement.Implements
 {
-    public class EducationLogic
+    public class EducationLogic : IEducationLogic
     {
         public void CreateOrUpdate(EducationBindingModel model)
         {

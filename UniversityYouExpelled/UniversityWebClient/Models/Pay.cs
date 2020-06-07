@@ -9,7 +9,7 @@ namespace UniversityWebClient.Models
     public class Pay
     {
         [Required]
-        public int PaySum { get; set; }
-        public int EdicationId { get; set; }
+        public decimal PaySum { get; set; }
+        public int EducationId { get; set; }
     }
 }

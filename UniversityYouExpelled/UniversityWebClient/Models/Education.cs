@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UniversityBusinessLogic.Enums;
 
 namespace UniversityWebClient.Models
 {
@@ -15,7 +16,7 @@ namespace UniversityWebClient.Models
         public decimal EdCost { get; set; }
         public decimal PaidSum { get; set; }
         public decimal Remain { get; set; }
-        public TravelStatus Status { get; set; }
-        public List<VisitDoctorModel> TravelTours { get; set; }
+        public EducationStatus Status { get; set; }
+        public List<Course> EducationCourses { get; set; }
     }
 }

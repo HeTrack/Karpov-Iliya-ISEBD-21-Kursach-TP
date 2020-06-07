@@ -9,7 +9,7 @@ namespace UniversityBusinessLogic.HelperModels
     {
         public string FileName { get; set; }
         public string Title { get; set; }
-        public List<EducationViewModel> Edications { get; set; }
+        public List<EducationViewModel> Educations { get; set; }
         public Dictionary<int, List<PayViewModel>> Pays { get; set; }
     }
 }

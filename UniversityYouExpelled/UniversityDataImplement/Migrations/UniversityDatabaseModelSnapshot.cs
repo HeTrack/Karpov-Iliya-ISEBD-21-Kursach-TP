@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UniversityDatabaseImplement;
+using UniversityDataBaseImplement;
 
 namespace UniversityDataBaseImplement.Migrations
 {
@@ -19,7 +19,7 @@ namespace UniversityDataBaseImplement.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.Client", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace UniversityDataBaseImplement.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.Course", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -83,7 +83,7 @@ namespace UniversityDataBaseImplement.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.Education", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.Education", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,7 +118,7 @@ namespace UniversityDataBaseImplement.Migrations
                     b.ToTable("Educations");
                 });
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.EducationCourse", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.EducationCourse", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -144,7 +144,7 @@ namespace UniversityDataBaseImplement.Migrations
                     b.ToTable("EducationCourses");
                 });
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.Pay", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.Pay", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -172,39 +172,39 @@ namespace UniversityDataBaseImplement.Migrations
                     b.ToTable("Pays");
                 });
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.Education", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.Education", b =>
                 {
-                    b.HasOne("UniversityDatabaseImplement.Models.Client", "Client")
+                    b.HasOne("UniversityDataBaseImplement.Models.Client", "Client")
                         .WithMany("Educations")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.EducationCourse", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.EducationCourse", b =>
                 {
-                    b.HasOne("UniversityDatabaseImplement.Models.Course", "Course")
+                    b.HasOne("UniversityDataBaseImplement.Models.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UniversityDatabaseImplement.Models.Education", "Education")
+                    b.HasOne("UniversityDataBaseImplement.Models.Education", "Education")
                         .WithMany("EducationCourses")
                         .HasForeignKey("EducationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UniversityDatabaseImplement.Models.Pay", b =>
+            modelBuilder.Entity("UniversityDataBaseImplement.Models.Pay", b =>
                 {
-                    b.HasOne("UniversityDatabaseImplement.Models.Client", "Client")
+                    b.HasOne("UniversityDataBaseImplement.Models.Client", "Client")
                         .WithMany("Pays")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UniversityDatabaseImplement.Models.Education", "Education")
+                    b.HasOne("UniversityDataBaseImplement.Models.Education", "Education")
                         .WithMany("Pays")
                         .HasForeignKey("EducationId")
                         .OnDelete(DeleteBehavior.Cascade)

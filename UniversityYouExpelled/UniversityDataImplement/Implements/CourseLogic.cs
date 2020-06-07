@@ -7,8 +7,7 @@ using System.Xml.Linq;
 using UniversityBusinessLogic.BindingModels;
 using UniversityBusinessLogic.Interfaces;
 using UniversityBusinessLogic.ViewModels;
-using UniversityDatabaseImplement;
-using UniversityDatabaseImplement.Models;
+using UniversityDataBaseImplement.Models;
 
 namespace UniversityDataBaseImplement.Implements
 {

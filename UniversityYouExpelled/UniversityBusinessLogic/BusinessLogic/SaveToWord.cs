@@ -4,8 +4,9 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UniversityBusinessLogic.HelperModels;
 
-namespace UniversityBusinessLogic.BisinessLogic
+namespace UniversityBusinessLogic.BusinessLogic
 {
     public class SaveToWord
     {
@@ -56,8 +57,8 @@ namespace UniversityBusinessLogic.BisinessLogic
                     TableRow  courseRow = new TableRow();
                     TableCell numberCell = new TableCell(new Paragraph(new Run(new Text(i.ToString()))));
                     TableCell nameCell = new TableCell(new Paragraph(new Run(new Text(course.CourseName))));
-                    TableCell LectureFIOCell = new TableCell(new Paragraph(new Run(new Text(course.LectureFIO))));
-                    TableCell StartCourseCell = new TableCell(new Paragraph(new Run(new Text(course.StartCourse))));                    
+                    TableCell LectureFIOCell = new TableCell(new Paragraph(new Run(new Text(course.LecturerFIO))));
+                    TableCell StartCourseCell = new TableCell(new Paragraph(new Run(new Text(course.StartCourse.ToString()))));                    
                     TableCell costCell = new TableCell(new Paragraph(new Run(new Text(course.Cost.ToString()))));
                     courseRow.Append(numberCell);
                     courseRow.Append(nameCell);

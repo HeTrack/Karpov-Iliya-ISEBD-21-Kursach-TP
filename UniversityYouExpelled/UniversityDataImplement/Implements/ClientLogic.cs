@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using UniversityBusinessLogic.BindingModels;
 using UniversityBusinessLogic.Interfaces;
 using UniversityBusinessLogic.ViewModels;
-using UniversityDatabaseImplement.Models;
+using UniversityDataBaseImplement.Models;
 
-namespace UniversityDatabaseImplement.Implements
+namespace UniversityDataBaseImplement.Implements
 {
    public class ClientLogic : IClientLogic
     {

@@ -5,8 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UniversityBusinessLogic.Enums;
+using UniversityBusinessLogic.HelperModels;
 
-namespace UniversityBusinessLogic.BisinessLogic
+namespace UniversityBusinessLogic.BusinessLogic
 {
     public class SaveToPdf
     {
@@ -45,7 +46,7 @@ namespace UniversityBusinessLogic.BisinessLogic
                     CreateRow(new PdfRowParameters
                     {
                         Table = courseTable,
-                        Texts = new List<string> { i.ToString(), course.CourseName, course.LecturerFIO, course.StartCourse, course.Cost.ToString() },
+                        Texts = new List<string> { i.ToString(), course.CourseName, course.LecturerFIO, course.StartCourse.ToString(), course.Cost.ToString() },
                         Style = "Normal",
                         ParagraphAlignment = ParagraphAlignment.Left
                     });
@@ -55,7 +56,7 @@ namespace UniversityBusinessLogic.BisinessLogic
                 CreateRow(new PdfRowParameters
                 {
                     Table = courseTable,
-                    Texts = new List<string> { "", "", "", "", "", "Итого:", education.FinalCost.ToString() },
+                    Texts = new List<string> { "", "", "", "", "", "Итого:", education.EdCost.ToString() },
                     Style = "Normal",
                     ParagraphAlignment = ParagraphAlignment.Left
                 });
@@ -64,7 +65,7 @@ namespace UniversityBusinessLogic.BisinessLogic
                     CreateRow(new PdfRowParameters
                     {
                         Table = courseTable,
-                        Texts = new List<string> { "", "", "", "", "", "К оплате:", education.FinalCost.ToString() },
+                        Texts = new List<string> { "", "", "", "", "", "К оплате:", education.EdCost.ToString() },
                         Style = "Normal",
                         ParagraphAlignment = ParagraphAlignment.Left
                     });

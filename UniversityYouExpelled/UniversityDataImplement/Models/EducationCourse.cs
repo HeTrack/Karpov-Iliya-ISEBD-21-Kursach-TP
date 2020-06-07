@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UniversityDatabaseImplement.Models
+namespace UniversityDataBaseImplement.Models
 {
    public class EducationCourse
     {
