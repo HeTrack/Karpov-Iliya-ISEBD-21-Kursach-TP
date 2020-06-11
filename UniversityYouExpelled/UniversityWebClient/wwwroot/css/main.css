@@ -1,0 +1,127 @@
+﻿*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+}
+
+.form-container{
+    background: #001B2E;
+    color: #FFF;
+    text-align: center;
+    overflow:hidden;
+    width: 100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    position: relative;
+}
+
+@keyframes animated{
+    0% {
+        transform:scale(1,0);
+    }
+    100%{
+        transform:scale(1,1);
+    }
+}
+
+.form-container > svg{
+    display: block;
+    transform-origin: bottom;
+    position: absolute;
+    bottom: 0;
+    animation: animated 1s cubic-bezier(.23, 1,.32,1) forwards
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30%;
+    padding-bottom: 200px;
+}
+
+@media screen and (max-width: 1400px) {
+    form {
+        width: 80%;
+    }
+}
+
+form input {
+    margin-bottom: 35px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.223);
+    color: rgba(255,255,255,0.223);
+    transition: .5s;
+    font-size: 1.1rem;
+    width: 100%;
+    height: 50px;
+    
+   } 
+
+form input:focus{
+outline: transparent;
+border-bottom: 2px solid #EDDEA4;
+}
+
+form label{
+    position: relative;
+    display: flex;
+}
+
+
+ form label span{
+     position: absolute;
+     top: 15px;
+     color: rgba(255,255,255,0.223);
+     pointer-events: none;
+     transition: .2s;
+ }
+
+ span.label{
+     margin-left:40px;
+     font-size: 1.2rem;
+ }
+
+ form a{
+     color: rgba(255,255,255,0.223);
+     text-decoration:none;
+     margin-right:auto;
+     margin-bottom:10px;
+ }
+
+ form h2{
+     font-size: 2rem;
+     color: #EDDEA4;
+     text-transform: uppercase;
+ }
+ 
+ form button{
+     margin: 20px auto;
+     background: #EDDEA4;
+     border: none;
+     border-radius: 5px;
+     text-transform: uppercase;
+     font-size: 1.2rem;
+     height: 40px;
+     width: 100%;
+     letter-spacing: 1.2px;
+     cursor: pointer;
+ }
+
+ form input:focus + span, input:valid + span{
+     font-size:0;
+ }
+
+ input:focus + span + span, input:valid+ span + span{
+     left: 0;
+     margin: 0;
+     top: -15px;
+ }

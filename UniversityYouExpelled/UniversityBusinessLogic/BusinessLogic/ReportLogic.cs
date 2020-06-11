@@ -85,8 +85,10 @@ namespace UniversityBusinessLogic.BusinessLogic
         {
             MailAddress from = new MailAddress("iliyalabatp@gmail.com", "Государственный Технический Университет «Все отчислены»");
             MailAddress to = new MailAddress(email);
-            MailMessage m = new MailMessage(from, to);
-            m.Subject = subject;
+            MailMessage m = new MailMessage(from, to)
+            {
+                Subject = subject
+            };
             m.Attachments.Add(new Attachment(fileName));
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
             smtp.Credentials = new NetworkCredential("iliyalabatp@gmail.com", "amene1488");

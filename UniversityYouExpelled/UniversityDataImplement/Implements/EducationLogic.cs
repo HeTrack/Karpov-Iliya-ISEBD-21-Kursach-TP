@@ -50,8 +50,7 @@ namespace UniversityDataBaseImplement.Implements
                                .GroupBy(rec => rec.CourseId)
                                .Select(rec => new
                                {
-                                   CourseId = rec.Key,
-                                   Count = rec.Sum(r => r.Count)
+                                   CourseId = rec.Key
                                });
 
                             foreach (var course in courses)
@@ -59,8 +58,7 @@ namespace UniversityDataBaseImplement.Implements
                                 context.EducationCourses.Add(new EducationCourse
                                 {
                                     EducationId = elem.Id,
-                                    CourseId = course.CourseId,
-                                    Count = course.Count
+                                    CourseId = course.CourseId
                                 });
                                 context.SaveChanges();
                             }
@@ -124,8 +122,7 @@ namespace UniversityDataBaseImplement.Implements
                     {
                         Id = rec.Id,
                         EducationId = rec.EducationId,
-                        CourseId = rec.CourseId,
-                        Count = rec.Count
+                        CourseId = rec.CourseId                        
                     }).ToList();
                 foreach (var course in EducationCourses)
                 {

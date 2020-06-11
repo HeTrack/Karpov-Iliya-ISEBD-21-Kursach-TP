@@ -38,8 +38,7 @@ namespace UniversityWebClient.Controllers
         public IActionResult Education(ReportModel model)
         {
             var payList = new List<PayViewModel>();
-            var educations = new List<EducationViewModel>();
-            educations = edLogic.Read(new EducationBindingModel
+            var educations = edLogic.Read(new EducationBindingModel
             {
                 ClientId = Program.Client.Id,
                 YearEd = model.YearFrom

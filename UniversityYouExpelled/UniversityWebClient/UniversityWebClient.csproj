@@ -17,4 +17,8 @@
     <ProjectReference Include="..\UniversityDataImplement\UniversityDataBaseImplement.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Education\" />
+  </ItemGroup>
+
 </Project>

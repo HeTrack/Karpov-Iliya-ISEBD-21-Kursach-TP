@@ -23,6 +23,5 @@ namespace UniversityBusinessLogic.ViewModels
         public DateTime StartCourse { get; set; }
         [DataMember]
         public decimal Cost { get; set; }
-        [DisplayName("Количество")]
     }
 }
