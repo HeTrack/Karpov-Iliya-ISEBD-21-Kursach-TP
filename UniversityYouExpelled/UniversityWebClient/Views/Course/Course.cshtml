@@ -9,18 +9,26 @@
 </div>
 <table class="table">
     <tr>
+        <td align="center">Год обучения</td>
         <td>Название курса</td>
-        <td>ФИО Преподавателя</td>
-        <td>Дата начала курса</td>
-        <td>Цена</td>
+        <td align="center">ФИО Преподавателя</td>
+        <td align="center">Дата начала курса</td>
+        <td align="center">Цена</td>
     </tr>
     @foreach (var course in ViewBag.courses)
     {
-        <tr>
-            <td>@course.CourseName</td>
-            <td>@course.LecturerFIO</td>
-            <td>@course.StartCourse</td>
-            <td>@course.Cost</td>
+<tr>
+    <td><b>@course.Key</b></td>
+</tr>
+        foreach (var details in course)
+        {
+        <tr>    
+            <td></td>
+            <td>@details.CourseName</td>
+            <td align="center">@details.LecturerFIO</td>
+            <td align="center">@details.StartCourse.ToShortDateString()</td>
+            <td align="center">@details.Cost</td>
         </tr>
+        }
     }
 </table>

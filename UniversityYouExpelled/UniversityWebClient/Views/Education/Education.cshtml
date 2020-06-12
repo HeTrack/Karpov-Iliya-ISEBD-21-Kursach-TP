@@ -4,82 +4,90 @@
 
 @model ReportModel
 @{
-ViewData["Title"] = "Обучения";
+    ViewData["Title"] = "Обучения";
+
 }
-<div class="text-center text-info">
-    <h1>Обучения</h1>
-</div>
+
+    <div class="text-center text-info">
+        <h1>Обучения</h1>       
+    </div>
 <hr />
-<p> <strong> <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="CreateEducation">Сформировать</a></strong></p>
+<p>
+    <strong>
+        <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="CreateEducation">Сформировать</a>
+        <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="ChangeEducation">Изменить</a>
+        <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="DelEducation">Удалить</a>
+    </strong>
+</p>
 <hr />
 @foreach (var education in ViewBag.educations)
 {
-<p><strong>Номер: @education.Id </strong></p>
-<p>Дата покупки: @education.YearEd</p>
-<p>Статус: @education.Status</p>
-<p>Цена: @education.EdCost</p>
-<p>План обучения:</p>
-<table class="table">
-    <tr>
-        <td>Курс</td>
-        <td>ФИО Преподавателя</td>
-        <td>Дата начала курса</td>       
-        <td>Цена</td>
-    </tr>
-    @foreach (var course in education.EdicationCourses)
+    <p><strong>Год обучения: @education.YearEd </strong></p>
+    <p>Дата последнего обновления: @education.EdCreate</p>
+    <p>Цена текущего обучения: @education.EdCost ₽</p>
+    <p>Статус оплаты: @education.Status</p>
+    <p>План обучения:</p>
+    <table class="table">
+        <tr>
+            <td>Курс</td>
+            <td>ФИО Преподавателя</td>
+            <td>Дата начала курса</td>
+            <td>Цена</td>
+        </tr>
+        @foreach (var course in education.EducationCourses)
         {
-    <tr>
-        <td>@course.CourseName</td>
-        <td>@course.LecturerFIO</td>
-        <td>@course.StartCourse</td>
-        <td>@course.Cost</td>
-    </tr>
+            <tr>
+                <td>@course.CourseName</td>
+                <td>@course.LecturerFIO</td>
+                <td>@course.StartCourse</td>
+                <td>@course.Cost</td>
+            </tr>
         }
-</table>
+    </table>
     if (education.Status != UniversityBusinessLogic.Enums.EducationStatus.Принят && ViewBag.Pays != null)
     {
-<p>Платежи:</p>
-<table class="table">
-    <tr>
-        <td>Дата</td>
-        <td>Сумма</td>
-    </tr>
-    @foreach (var pay in ViewBag.Pays)
+        <p>Платежи:</p>
+        <table class="table">
+            <tr>
+                <td>Дата</td>
+                <td>Сумма</td>
+            </tr>
+            @foreach (var pay in ViewBag.Pays)
             {
                 if (pay.EdicationId == education.Id)
                 {
-    <tr>
-        <td>@pay.PayDate</td>
-        <td>@pay.PaySum</td>
-    </tr>
+                    <tr>
+                        <td>@pay.PayDate</td>
+                        <td>@pay.PaySum</td>
+                    </tr>
                 }
             }
-</table>
+        </table>
     }
-<hr />
+    <hr />
     if (education.Status == UniversityBusinessLogic.Enums.EducationStatus.Оплачен)
     {
-<p>Полностью оплачено</p>
-<hr />
+        <p>Полностью оплачено</p>
+        <hr />
     }
     else
     {
         if (education.Status == UniversityBusinessLogic.Enums.EducationStatus.Частично_Оплачен)
         {
-<p>К оплате: @education.Remain</p>
-<hr />
+            <p>К оплате: @education.Remain</p>
+            <hr />
 
         }
-<p>
-    <a href="/Education/Pay/@education.Id">Оплатить</a>
-</p>
+        <p>
+            <a href="/Education/Pay/@education.Id">Оплатить</a>
+        </p>
     }
-<p>
-    <a href="/Education/SendWordReport/@education.Id">Отправить список курсов в формате .docx</a>
-</p>
-<p>
-    <a href="/Education/SendExcelReport/@education.Id">Отправить список курсов в формате .xslx</a>
-</p>
-<hr />
+    <p>
+        <a href="/Education/SendWordReport/@education.Id">Отправить список курсов в формате .docx</a>
+    </p>
+    <p>
+        <a href="/Education/SendExcelReport/@education.Id">Отправить список курсов в формате .xslx</a>
+    </p>
+    <hr />
 
 }

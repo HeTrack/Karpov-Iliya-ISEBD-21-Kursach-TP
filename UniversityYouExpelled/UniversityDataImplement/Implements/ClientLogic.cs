@@ -32,6 +32,7 @@ namespace UniversityDataBaseImplement.Implements
                 }               
                 elem.Login = model.Login;
                 elem.ClientFIO = model.ClientFIO;
+                elem.CourseNum = model.CourseNum;
                 elem.Email = model.Email;
                 elem.Phone = model.Phone;
                 elem.DataRegistration = model.DateRegistration;
@@ -70,6 +71,7 @@ namespace UniversityDataBaseImplement.Implements
                    Id = rec.Id,
                    Login = rec.Login,
                    ClientFIO = rec.ClientFIO,
+                   CourseNum = rec.CourseNum,
                    Email = rec.Email,
                    Password = rec.Password,
                    Phone = rec.Phone,

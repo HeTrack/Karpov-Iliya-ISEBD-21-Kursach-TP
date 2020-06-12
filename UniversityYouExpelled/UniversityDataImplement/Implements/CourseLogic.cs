@@ -12,14 +12,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace UniversityDataBaseImplement.Implements
 {
-   public class CourseLogic: ICourseLogic
-    {    
+    public class CourseLogic : ICourseLogic
+    {
         private readonly string CourseFileName = "D://CourseData//Course.xml";
-        public List<Course> Courses { get; set; }
-        public CourseLogic()
-        {
-            Courses = LoadCourses();
-        }
+        //public List<Course> Courses { get; set; }
+        
         private List<Course> LoadCourses()
         {
             var list = new List<Course>();
@@ -32,9 +29,10 @@ namespace UniversityDataBaseImplement.Implements
                     list.Add(new Course
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        CourseYear = Convert.ToInt32(elem.Element("CourseYear").Value),
                         CourseName = elem.Element("CourseName").Value,
                         LecturerFIO = elem.Element("LecturerFIO").Value,
-                        StartCourse = Convert.ToDateTime(elem.Element("StartCourse").Value),
+                        StartCourse = Convert.ToDateTime(elem.Element("StartCourse").Value).Date,
                         Cost = Convert.ToDecimal(elem.Element("Cost").Value),
                     });
                 }
@@ -48,7 +46,7 @@ namespace UniversityDataBaseImplement.Implements
             {
                 foreach (var course in courses)
                 {
-                    Course element = context.Courses.FirstOrDefault(rec => rec.Id == course.Id);
+                    Course element = context.Courses.FirstOrDefault(rec => rec.CourseName == course.CourseName.ToString());
                     if (element != null)
                     {
                         break;
@@ -58,9 +56,10 @@ namespace UniversityDataBaseImplement.Implements
                         element = new Course();
                         context.Courses.Add(element);
                     }
+                    element.CourseYear = course.CourseYear;
                     element.CourseName = course.CourseName;
                     element.LecturerFIO = course.LecturerFIO;
-                    element.StartCourse = course.StartCourse;                 
+                    element.StartCourse = course.StartCourse.Date;
                     element.Cost = course.Cost;
                     context.SaveChanges();
                 }
@@ -68,18 +67,21 @@ namespace UniversityDataBaseImplement.Implements
         }
         public List<CourseViewModel> Read(CourseBindingModel model)
         {
-           Database();
-            return Courses
-            .Where(rec => model == null || rec.Id == model.Id)
+            Database();
+            using (var context = new UniversityDatabase())
+            {
+                return context.Courses.Where(rec => model == null || rec.Id == model.Id)
             .Select(rec => new CourseViewModel
             {
                 Id = rec.Id,
+                CourseYear = rec.CourseYear,
                 CourseName = rec.CourseName,
-                LecturerFIO = rec.LecturerFIO,             
-                StartCourse = rec.StartCourse,
+                LecturerFIO = rec.LecturerFIO,
+                StartCourse = rec.StartCourse.Date,
                 Cost = rec.Cost,
             })
             .ToList();
+            }
         }
     }
 }

@@ -20,6 +20,9 @@ namespace UniversityBusinessLogic.ViewModels
         [DisplayName("Логин")]
         public string Login { get; set; }
         [DataMember]
+        [DisplayName("Номер Курса обучения")]
+        public int CourseNum { get; set; }
+        [DataMember]
         [DisplayName("Номер телефона")]
         public string Phone { get; set; }
         [DataMember]

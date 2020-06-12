@@ -8,6 +8,8 @@ namespace UniversityBusinessLogic.ViewModels
    public class CourseViewModel
     {
         public int Id { get; set; }
+        [DisplayName("Год обучения")]
+        public int CourseYear { get; set; }
         [DisplayName("Название курса")]
         public string CourseName { get; set; }
         [DisplayName("ФИО Преподавателя")]

@@ -17,6 +17,8 @@ namespace UniversityBusinessLogic.BindingModels
         [DataMember]
         public string Login { get; set; }
         [DataMember]
+        public int CourseNum { get; set; }
+        [DataMember]
         public string Phone{ get; set; }
         [DataMember]
         public string Password { get; set; }

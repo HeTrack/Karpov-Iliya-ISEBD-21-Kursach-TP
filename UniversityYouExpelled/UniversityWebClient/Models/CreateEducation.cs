@@ -7,6 +7,6 @@ namespace UniversityWebClient.Models
 {
     public class CreateEducation
     {
-        public Dictionary<int, int> EducationCourses { get; set; }
+        public Dictionary<int, bool> EducationCourses { get; set; }
     }
 }

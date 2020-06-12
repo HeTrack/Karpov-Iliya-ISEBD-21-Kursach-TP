@@ -22,8 +22,7 @@ namespace UniversityDataBaseImplement.Implements
                        Education elem = model.Id.HasValue ? null : new Education();
                         if (model.Id.HasValue)
                         {
-                            elem = context.Educations.FirstOrDefault(rec => rec.Id ==
-                           model.Id);
+                            elem = context.Educations.FirstOrDefault(rec => rec.Id == model.Id);
                             if (elem == null)
                             {
                                 throw new Exception("Элемент не найден");
@@ -31,7 +30,6 @@ namespace UniversityDataBaseImplement.Implements
                             elem.ClientId = model.ClientId;
                             elem.EdCreate = model.EdCreate;
                             elem.YearEd = model.YearEd;
-                            elem.StatusEducation = model.StatusEducation;
                             elem.EdCost = model.EdCost;
                             elem.Status = model.Status;
                             context.SaveChanges();
@@ -40,9 +38,8 @@ namespace UniversityDataBaseImplement.Implements
                         {
                             elem.ClientId = model.ClientId;
                             elem.EdCreate = model.EdCreate;
-                            elem.YearEd = model.YearEd;
-                            elem.StatusEducation = model.StatusEducation;
                             elem.EdCost = model.EdCost;
+                            elem.YearEd = model.YearEd;
                             elem.Status = model.Status;
                             context.Educations.Add(elem);
                             context.SaveChanges();

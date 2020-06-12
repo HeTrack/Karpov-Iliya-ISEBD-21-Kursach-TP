@@ -12,6 +12,8 @@ namespace UniversityDataBaseImplement.Models
     {
         public int Id { get; set; }
         [Required]
+        public int CourseYear { get; set; }
+        [Required]
         public string CourseName { get; set; }
         [Required]
         public string LecturerFIO { get; set; }

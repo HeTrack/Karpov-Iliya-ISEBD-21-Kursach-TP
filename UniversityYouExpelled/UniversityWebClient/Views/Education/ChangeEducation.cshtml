@@ -1,7 +1,6 @@
 ﻿@model UniversityWebClient.Models.CreateEducation
-
 @{
-    ViewData["Title"] = "Сформировать обучение";
+    ViewData["Title"] = "Изменить обучение";
 }
 
 <div class="text-center text-info">
@@ -21,13 +20,19 @@
         </tr>
         @foreach (UniversityBusinessLogic.ViewModels.CourseViewModel course in ViewBag.EducationCourses)
         {
-    <tr>
-        <td>@course.CourseName</td>
-        <td align="center">@course.LecturerFIO</td>
-        <td align="center">@course.StartCourse.ToShortDateString()</td>
-        <td align="center">@course.Cost</td>
-        <td><input type="checkbox" name="Model.EducationCourses[@course.Id]" value="true" /></td>
-    </tr>
+            <tr>
+                <td>@course.CourseName</td>
+                <td align="center">@course.LecturerFIO</td>
+                <td align="center">@course.StartCourse.ToShortDateString()</td>
+                <td align="center">@course.Cost</td>
+                @{
+                    string check = "";
+                    EducationViewModel find = ViewBag.educations[ViewBag.educations.Count - 1];
+                   if(find.EducationCourses.Find( x => x.CourseName == course.CourseName)!=null)
+check = "checked";
+}
+                <td><input type="checkbox" name="Model.EducationCourses[@course.Id]" value="true" checked="@check"/></td>
+            </tr>
         }
     </table>
     <button type="submit" class="btn btn-info btn-sm">Создать</button>

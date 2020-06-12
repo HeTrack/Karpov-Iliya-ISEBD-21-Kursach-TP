@@ -19,7 +19,7 @@ namespace UniversityWebClient.Controllers
             }
             public IActionResult Course()
             {
-                ViewBag.Courses = _course.Read(null);
+                ViewBag.Courses = _course.Read(null).GroupBy(rec => rec.CourseYear).ToList();
                 return View();
             }
         }

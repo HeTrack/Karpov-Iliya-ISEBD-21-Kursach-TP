@@ -18,8 +18,6 @@ namespace UniversityBusinessLogic.BindingModels
         [DataMember]
         public int YearEd { get; set; }
         [DataMember]
-        public string StatusEducation { get; set; }
-        [DataMember]
         public decimal EdCost { get; set; }
         [DataMember]       
         public decimal Remain { get; set; }

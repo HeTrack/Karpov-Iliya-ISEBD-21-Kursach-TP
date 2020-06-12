@@ -129,10 +129,11 @@ namespace UniversityWebClient.Controllers
                 ClientFIO = user.ClientFIO,
                 Login = user.Login,
                 Password = user.Password,
+                CourseNum = 1,
                 Email = user.Email,
                 Phone = user.Phone,
                 BlockStatus = false
-            });
+            });  
             ModelState.AddModelError("", "Вы успешно зарегистрированы");
             return View("Registration", user);
         }
