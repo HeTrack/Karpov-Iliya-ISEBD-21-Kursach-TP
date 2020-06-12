@@ -10,12 +10,8 @@ namespace UniversityDataBaseImplement.Models
    public class EducationCourse
     {
         public int Id { get; set; }
-        [Required]
         public int? EducationId { get; set; }
-        [Required]
         public int CourseId { get; set; }
-        [Required]
-        public int Count { get; set; }
         public virtual Course Course { get; set; }
         public virtual Education Education { get; set; }
     }

@@ -40,7 +40,7 @@ namespace UniversityDataBaseImplement.Implements
             }
             return list;
         }
-        public void SaveToDatabase()
+        public void Database()
         {
             var courses = LoadCourses();
             using (var context = new UniversityDatabase())
@@ -67,7 +67,7 @@ namespace UniversityDataBaseImplement.Implements
         }
         public List<CourseViewModel> Read(CourseBindingModel model)
         {
-            SaveToDatabase();
+           Database();
             return Courses
             .Where(rec => model == null || rec.Id == model.Id)
             .Select(rec => new CourseViewModel

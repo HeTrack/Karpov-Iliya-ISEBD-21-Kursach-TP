@@ -16,11 +16,7 @@ namespace UniversityDataBaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Client elem = context.Clients.FirstOrDefault(rec => rec.Login == model.Login && rec.Id != model.Id);
-                if (elem != null)
-                {
-                    throw new Exception("Уже есть клиент с таким логином");
-                }
+                Client elem = model.Id.HasValue ? null : new Client();
                 if (model.Id.HasValue)
                 {
                     elem = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
@@ -65,24 +61,22 @@ namespace UniversityDataBaseImplement.Implements
             using (var context = new UniversityDatabase())
             {
                 return context.Clients
-                .Where(
-                    rec => model == null
-                    || rec.Id == model.Id
-                    || rec.Login == model.Login && rec.Password == model.Password
-                )
-                .Select(rec => new ClientViewModel
-                {
-                    Id = rec.Id,
-                    Login = rec.Login,
-                    ClientFIO = rec.ClientFIO,
-                    Password = rec.Password,
-                    Email = rec.Email,
-                    Phone = rec.Phone,
-                    DateRegistration = rec.DataRegistration,
-                    BlockStatus = rec.BlockStatus
-                })
+                 .Where(rec => model == null
+                   || rec.Id == model.Id
+                 || (rec.Login == model.Login || rec.Email == model.Email)
+                        && (model.Password == null || rec.Password == model.Password))
+               .Select(rec => new ClientViewModel
+               {
+                   Id = rec.Id,
+                   Login = rec.Login,
+                   ClientFIO = rec.ClientFIO,
+                   Email = rec.Email,
+                   Password = rec.Password,
+                   Phone = rec.Phone,
+                   BlockStatus = rec.BlockStatus
+               })
                 .ToList();
             }
         }
     }
-} 
+}

@@ -14,7 +14,6 @@ namespace UniversityWebClient.Models
         public int YearEd { get; set; }
         public string StatusEducation { get; set; }
         public decimal EdCost { get; set; }
-        public decimal PaidSum { get; set; }
         public decimal Remain { get; set; }
         public EducationStatus Status { get; set; }
         public List<Course> EducationCourses { get; set; }

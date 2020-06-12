@@ -1,0 +1,85 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model ReportModel
+@{
+ViewData["Title"] = "Обучения";
+}
+<div class="text-center text-info">
+    <h1>Обучения</h1>
+</div>
+<hr />
+<p> <strong> <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="CreateEducation">Сформировать</a></strong></p>
+<hr />
+@foreach (var education in ViewBag.educations)
+{
+<p><strong>Номер: @education.Id </strong></p>
+<p>Дата покупки: @education.YearEd</p>
+<p>Статус: @education.Status</p>
+<p>Цена: @education.EdCost</p>
+<p>План обучения:</p>
+<table class="table">
+    <tr>
+        <td>Курс</td>
+        <td>ФИО Преподавателя</td>
+        <td>Дата начала курса</td>       
+        <td>Цена</td>
+    </tr>
+    @foreach (var course in education.EdicationCourses)
+        {
+    <tr>
+        <td>@course.CourseName</td>
+        <td>@course.LecturerFIO</td>
+        <td>@course.StartCourse</td>
+        <td>@course.Cost</td>
+    </tr>
+        }
+</table>
+    if (education.Status != UniversityBusinessLogic.Enums.EducationStatus.Принят && ViewBag.Pays != null)
+    {
+<p>Платежи:</p>
+<table class="table">
+    <tr>
+        <td>Дата</td>
+        <td>Сумма</td>
+    </tr>
+    @foreach (var pay in ViewBag.Pays)
+            {
+                if (pay.EdicationId == education.Id)
+                {
+    <tr>
+        <td>@pay.PayDate</td>
+        <td>@pay.PaySum</td>
+    </tr>
+                }
+            }
+</table>
+    }
+<hr />
+    if (education.Status == UniversityBusinessLogic.Enums.EducationStatus.Оплачен)
+    {
+<p>Полностью оплачено</p>
+<hr />
+    }
+    else
+    {
+        if (education.Status == UniversityBusinessLogic.Enums.EducationStatus.Частично_Оплачен)
+        {
+<p>К оплате: @education.Remain</p>
+<hr />
+
+        }
+<p>
+    <a href="/Education/Pay/@education.Id">Оплатить</a>
+</p>
+    }
+<p>
+    <a href="/Education/SendWordReport/@education.Id">Отправить список курсов в формате .docx</a>
+</p>
+<p>
+    <a href="/Education/SendExcelReport/@education.Id">Отправить список курсов в формате .xslx</a>
+</p>
+<hr />
+
+}

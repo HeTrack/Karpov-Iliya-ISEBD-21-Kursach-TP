@@ -64,7 +64,7 @@ namespace UniversityWebClient.Controllers
         [HttpPost]
         public ViewResult Registration(Registration user)
         {
-            if (String.IsNullOrEmpty(user.Login))
+            if (string.IsNullOrEmpty(user.Login))
             {
                 ModelState.AddModelError("", "Введите логин");
                 return View(user);
@@ -84,7 +84,7 @@ namespace UniversityWebClient.Controllers
                 ModelState.AddModelError("", "Данный логин уже занят");
                 return View(client);
             }
-            if (String.IsNullOrEmpty(user.Email))
+            if (string.IsNullOrEmpty(user.Email))
             {
                 ModelState.AddModelError("", "Введите электронную почту");
                 return View(user);
@@ -109,17 +109,17 @@ namespace UniversityWebClient.Controllers
                 ModelState.AddModelError("", $"Длина пароля должна быть от {passwordMinLength} до {passwordMaxLength} символов");
                 return View(user);
             }
-            if (String.IsNullOrEmpty(user.ClientFIO))
+            if (string.IsNullOrEmpty(user.ClientFIO))
             {
                 ModelState.AddModelError("", "Введите ФИО");
                 return View(user);
             }
-            if (String.IsNullOrEmpty(user.Password))
+            if (string.IsNullOrEmpty(user.Password))
             {
                 ModelState.AddModelError("", "Введите пароль");
                 return View(user);
             }
-            if (String.IsNullOrEmpty(user.Phone))
+            if (string.IsNullOrEmpty(user.Phone))
             {
                 ModelState.AddModelError("", "Введите номер телефона");
                 return View(user);
@@ -128,6 +128,7 @@ namespace UniversityWebClient.Controllers
             {
                 ClientFIO = user.ClientFIO,
                 Login = user.Login,
+                DateRegistration = DateTime.Now,
                 Password = user.Password,
                 Email = user.Email,
                 Phone = user.Phone,

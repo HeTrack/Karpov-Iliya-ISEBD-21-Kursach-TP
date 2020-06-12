@@ -75,7 +75,7 @@ namespace UniversityWebClient.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateTravel(CreateEducation model)
+        public ActionResult CreateEducation(CreateEducation model)
         {
             if (!ModelState.IsValid)
             {
@@ -97,8 +97,8 @@ namespace UniversityWebClient.Controllers
             }
             if (edCourses.Count == 0)
             {
-                ViewBag.Products = courseLogic.Read(null);
-                ModelState.AddModelError("", "Ни один тур не выбран");
+                ViewBag.EducationCourses = courseLogic.Read(null);
+                ModelState.AddModelError("", "Ни один курс не выбран");
                 return View(model);
             }
             edLogic.CreateOrUpdate(new EducationBindingModel
@@ -138,7 +138,7 @@ namespace UniversityWebClient.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Payment(Pay model)
+        public ActionResult Pay(Pay model)
         {
             EducationViewModel education = edLogic.Read(new EducationBindingModel
             {
@@ -206,7 +206,7 @@ namespace UniversityWebClient.Controllers
             var education = edLogic.Read(new EducationBindingModel { Id = id }).FirstOrDefault();
             string fileName = "D:\\Kursach TP\\" + education.Id + ".xlsx";
             reportLogic.SaveEducationCoursesToExcelFile(fileName, education, Program.Client.Email);
-            return RedirectToAction("Educayion");
+            return RedirectToAction("Education");
         }
     }
 }

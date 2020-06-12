@@ -8,6 +8,7 @@ namespace UniversityBusinessLogic.Interfaces
 {
    public interface ICourseLogic
     {
-        List<CourseViewModel> Read(CourseBindingModel model);   
+        List<CourseViewModel> Read(CourseBindingModel model);
+        void Database();
     }
 }

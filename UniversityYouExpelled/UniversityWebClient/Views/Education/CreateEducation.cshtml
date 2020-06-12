@@ -1,0 +1,38 @@
+﻿@model UniversityWebClient.Models.CreateEducation
+
+@{
+    ViewData["Title"] = "Сформировать обучение";
+}
+
+<div class="text-center text-info">
+    <h1>@ViewData["Title"]</h1>
+</div>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @style = "color: red" })
+    <p>Мой курс обучения:</p>
+    <table class="table">
+        <tr>
+            <td>Курс</td>
+            <td>ФИО Прпеподавателя</td>
+            <td>Дата начала курса</td>
+            <td>Цена</td>
+        </tr>
+        @foreach (UniversityBusinessLogic.ViewModels.CourseViewModel course in ViewBag.EducationCourses)
+        {
+            <tr>
+                <td>@course.CourseName</td>
+                <td>@course.LecturerFIO</td>
+                <td>@course.StartCourse</td>               
+                <td><input type="number" name="Model.EducationCourses[@course.Id]" value="0" min="0" /></td>
+                <td>@course.Cost</td>
+            </tr>
+        }
+    </table>
+    <button type="submit" class="btn btn-info btn-sm">Создать</button>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
