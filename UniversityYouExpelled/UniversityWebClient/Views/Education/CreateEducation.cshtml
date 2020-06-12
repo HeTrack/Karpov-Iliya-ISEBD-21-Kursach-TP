@@ -14,20 +14,20 @@
     <p>Мой курс обучения:</p>
     <table class="table">
         <tr>
-            <td>Курс</td>
-            <td>ФИО Прпеподавателя</td>
+            <td><justify>Курс</justify></td>
+            <td><justify>ФИО Преподавателя</justify></td>
             <td>Дата начала курса</td>
             <td>Цена</td>
         </tr>
         @foreach (UniversityBusinessLogic.ViewModels.CourseViewModel course in ViewBag.EducationCourses)
         {
-            <tr>
-                <td>@course.CourseName</td>
-                <td>@course.LecturerFIO</td>
-                <td>@course.StartCourse</td>               
-                <td><input type="number" name="Model.EducationCourses[@course.Id]" value="0" min="0" /></td>
-                <td>@course.Cost</td>
-            </tr>
+    <tr>
+        <td><justify>@course.CourseName</justify></td>
+        <td><justify>@course.LecturerFIO</justify></td>
+        <td>@course.StartCourse</td>
+        <td>@course.Cost</td>
+        <td><input type="checkbox" name="Model.EducationCourses[@course.Id]" value="0"/></td>
+    </tr>
         }
     </table>
     <button type="submit" class="btn btn-info btn-sm">Создать</button>

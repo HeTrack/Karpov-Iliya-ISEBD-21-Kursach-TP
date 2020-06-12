@@ -162,7 +162,7 @@ namespace UniversityWebClient.Controllers
                 EducationId = education.Id,
                 ClientId = Program.Client.Id,
                 PayDate = DateTime.Now,
-                Sum = model.PaySum
+                PaySum = model.PaySum
             });
             Remain -= model.PaySum;
             edLogic.CreateOrUpdate(new EducationBindingModel
@@ -190,7 +190,7 @@ namespace UniversityWebClient.Controllers
             decimal paidSum = payLogic.Read(new PayBindingModel
             {
                EducationId = education.Id
-            }).Select(rec => rec.Sum).Sum();
+            }).Select(rec => rec.PaySum).Sum();
 
             return sum - paidSum;
         }

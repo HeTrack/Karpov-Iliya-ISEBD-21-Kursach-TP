@@ -17,6 +17,6 @@ namespace UniversityBusinessLogic.BindingModels
         [DataMember]
         public DateTime PayDate{ get; set; }
         [DataMember]
-        public decimal Sum { get; set; }
+        public decimal PaySum { get; set; }
     }
 }

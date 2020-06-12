@@ -8,12 +8,13 @@ using UniversityBusinessLogic.BindingModels;
 using UniversityBusinessLogic.Interfaces;
 using UniversityBusinessLogic.ViewModels;
 using UniversityDataBaseImplement.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace UniversityDataBaseImplement.Implements
 {
    public class CourseLogic: ICourseLogic
     {    
-        private readonly string CourseFileName = "C://Users//iliya//Sourse//Kursach TP//UniversityYouExpelled//UniversityData//Courses.xml";
+        private readonly string CourseFileName = "D://CourseData//Course.xml";
         public List<Course> Courses { get; set; }
         public CourseLogic()
         {
@@ -34,7 +35,7 @@ namespace UniversityDataBaseImplement.Implements
                         CourseName = elem.Element("CourseName").Value,
                         LecturerFIO = elem.Element("LecturerFIO").Value,
                         StartCourse = Convert.ToDateTime(elem.Element("StartCourse").Value),
-                        Cost = Convert.ToInt32(elem.Element("Cost").Value),
+                        Cost = Convert.ToDecimal(elem.Element("Cost").Value),
                     });
                 }
             }

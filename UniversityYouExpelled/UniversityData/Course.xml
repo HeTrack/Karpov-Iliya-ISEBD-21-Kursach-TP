@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Courses>
+  <Course Id="1">
+    <CourseName>Бухгалтерский и финансовый учет</CourseName>
+    <LecturerFIO>Ларионова О.Б.</LecturerFIO>
+    <StartCourse>03.09.2021</StartCourse>
+    <Cost>2100</Cost>
+  </Course>
+  <Course Id="2">
+    <CourseName>Компьютерные системы и сети в СМИ</CourseName>
+    <LecturerFIO>Филиппов А.А.</LecturerFIO>
+    <StartCourse>23.09.2021</StartCourse>
+    <Cost>7100</Cost>
+  </Course>
+  <Course Id="3">
+    <CourseName>Экономический и финансовый анализ</CourseName>
+    <LecturerFIO>Шанченко Н.И.</LecturerFIO>
+    <StartCourse>03.10.2021</StartCourse>
+    <Cost>3500</Cost>
+  </Course>
+  <Course Id="4">
+    <CourseName>Теория автоматов и формальных языков</CourseName>
+    <LecturerFIO>Шамшев А.Б.</LecturerFIO>
+    <StartCourse>13.10.2021</StartCourse>
+    <Cost>4500</Cost>
+  </Course>
+  <Course Id="5">
+    <CourseName>Проектирование и архитектура программных систем</CourseName>
+    <LecturerFIO>Наместников А.М.</LecturerFIO>
+    <StartCourse>14.11.2021</StartCourse>
+    <Cost>8500</Cost>
+  </Course>
+  <Course Id="6">
+    <CourseName>Предметно-ориентированные экономические информационные системы</CourseName>
+    <LecturerFIO>Эгов Е.Н.</LecturerFIO>
+    <StartCourse>25.01.2022</StartCourse>
+    <Cost>14228</Cost>
+  </Course>
+  <Course Id="7">
+    <CourseName>Инновационный менеджмент</CourseName>
+    <LecturerFIO>Тронин В.Г.</LecturerFIO>
+    <StartCourse>10.02.2022</StartCourse>
+    <Cost>5678</Cost>
+  </Course>
+</Courses>

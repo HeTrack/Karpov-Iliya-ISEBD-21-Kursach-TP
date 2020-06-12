@@ -104,7 +104,7 @@ namespace UniversityDataBaseImplement.Implements
                     EdCreate = rec.EdCreate,
                     StatusEducation = rec.StatusEducation,
                     EdCost = rec.EdCost,
-                    Remain = rec.EdCost - context.Pays.Where(recP => recP.EducationId == recP.Id).Select(recP => recP.Sum).Sum(),
+                    Remain = rec.EdCost - context.Pays.Where(recP => recP.EducationId == recP.Id).Select(recP => recP.PaySum).Sum(),
                     Status = rec.Status,
                     EducationCourses = GetEdCourse(rec)
                 })

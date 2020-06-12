@@ -3,29 +3,28 @@
 @{
     ViewData["Title"] = "Авторизация";
 }
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">.
+    <head>       
         <title>Авторизация</title>
         <link rel="stylesheet" href="/css/main.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
 <body>
 <div class="form-container">
-    <form action="">
+    <form asp-action="Login">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <h2>Логин</h2>
-        <label asp-for="Login">
-            <input type="text" class="login" required>
+        <label asp-for="Login" class="control-label">
+            <input asp-for="Login" class="login" required>
             <span class="icon">
                 <i class="fa fa-user"></i>
             </span>
             <span class="label">
-            Login
+                Login
             </span>
         </label>
-        <label asp-for="Password">
-            <input type="password" class="password" required>
-            <span class="icon">
+        <label asp-for="Password" class="control-label">
+            <input asp-for="Password" class="password" required>
+            <span  class="icon">
                 <i class="fa fa-lock"></i>
             </span>
             <span class="label">

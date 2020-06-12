@@ -33,7 +33,7 @@ namespace UniversityDataBaseImplement.Implements
                 }
                 elem.EducationId = model.EducationId;
                 elem.ClientId = model.ClientId;
-                elem.Sum = model.Sum;
+                elem.PaySum = model.PaySum;
                 elem.PayDate = model.PayDate;
                 context.SaveChanges();
             }
@@ -68,7 +68,7 @@ namespace UniversityDataBaseImplement.Implements
                     ClientId = rec.ClientId,
                     PayDate = rec.PayDate,
                     EducationId = rec.EducationId,
-                    Sum = rec.Sum
+                    PaySum = rec.PaySum
                 })
                 .ToList();
             }

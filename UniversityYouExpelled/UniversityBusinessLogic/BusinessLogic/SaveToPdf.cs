@@ -105,7 +105,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                     CreateRow(new PdfRowParameters
                     {
                         Table = payTable,
-                        Texts = new List<string> { i.ToString(), pay.PayDate.ToString(), pay.Sum.ToString() },
+                        Texts = new List<string> { i.ToString(), pay.PayDate.ToString(), pay.PaySum.ToString() },
                         Style = "Normal",
                         ParagraphAlignment = ParagraphAlignment.Left
                     });

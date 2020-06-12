@@ -61,10 +61,10 @@ namespace UniversityWebClient.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost]      
         public ViewResult Registration(Registration user)
         {
-            if (string.IsNullOrEmpty(user.Login))
+            if (String.IsNullOrEmpty(user.Login))
             {
                 ModelState.AddModelError("", "Введите логин");
                 return View(user);
@@ -82,9 +82,9 @@ namespace UniversityWebClient.Controllers
             if (existClient != null)
             {
                 ModelState.AddModelError("", "Данный логин уже занят");
-                return View(client);
+                return View(user);
             }
-            if (string.IsNullOrEmpty(user.Email))
+            if (String.IsNullOrEmpty(user.Email))
             {
                 ModelState.AddModelError("", "Введите электронную почту");
                 return View(user);
@@ -96,12 +96,12 @@ namespace UniversityWebClient.Controllers
             if (existClient != null)
             {
                 ModelState.AddModelError("", "Данный Email уже занят");
-                return View(client);
+                return View(user);
             }
             if (!Regex.IsMatch(user.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
             {
                 ModelState.AddModelError("", "Email введен некорректно");
-                return View(client);
+                return View(user);
             }
             if (user.Password.Length > passwordMaxLength ||
             user.Password.Length < passwordMinLength)
@@ -109,17 +109,17 @@ namespace UniversityWebClient.Controllers
                 ModelState.AddModelError("", $"Длина пароля должна быть от {passwordMinLength} до {passwordMaxLength} символов");
                 return View(user);
             }
-            if (string.IsNullOrEmpty(user.ClientFIO))
+            if (String.IsNullOrEmpty(user.ClientFIO))
             {
                 ModelState.AddModelError("", "Введите ФИО");
                 return View(user);
             }
-            if (string.IsNullOrEmpty(user.Password))
+            if (String.IsNullOrEmpty(user.Password))
             {
                 ModelState.AddModelError("", "Введите пароль");
                 return View(user);
             }
-            if (string.IsNullOrEmpty(user.Phone))
+            if (String.IsNullOrEmpty(user.Phone))
             {
                 ModelState.AddModelError("", "Введите номер телефона");
                 return View(user);
@@ -128,7 +128,6 @@ namespace UniversityWebClient.Controllers
             {
                 ClientFIO = user.ClientFIO,
                 Login = user.Login,
-                DateRegistration = DateTime.Now,
                 Password = user.Password,
                 Email = user.Email,
                 Phone = user.Phone,

@@ -33,9 +33,6 @@ namespace UniversityBusinessLogic.ViewModels
         [DisplayName("Статус")]
         public EducationStatus Status { get; set; }
         [DataMember]
-        [DisplayName("Оплаченная сумма")]
-        public decimal PaidSum { get; set; }
-        [DataMember]
         [DisplayName("Оcтаток")]
         public decimal Remain { get; set; }
         [DataMember]

@@ -16,7 +16,7 @@ namespace UniversityDataBaseImplement.Models
         [Required]
         public DateTime PayDate { get; set; }
         [Required]
-        public decimal Sum { get; set; }
+        public decimal PaySum { get; set; }
         public virtual Education Education { get; set; }
         public virtual Client Client { get; set; }
     }

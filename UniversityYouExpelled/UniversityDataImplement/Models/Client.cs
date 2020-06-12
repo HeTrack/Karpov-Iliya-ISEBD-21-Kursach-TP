@@ -25,8 +25,10 @@ namespace UniversityDataBaseImplement.Models
         public DateTime DataRegistration { get; set; }
         [Required]
         public bool BlockStatus { get; set; }
+        
         [ForeignKey("ClientId")]
         public virtual List<Education> Educations { get; set; }
+        
         [ForeignKey("ClientId")]
         public virtual List<Pay> Pays { get; set; }
     }
