@@ -30,7 +30,7 @@ namespace UniversityBusinessLogic.BusinessLogic
             {
                 courses.Add(courseLogic.Read(new CourseBindingModel
                 {
-                    Id = course.CourseId
+                    ID = course.CourseID
                 }).FirstOrDefault());
 
             }
@@ -42,14 +42,14 @@ namespace UniversityBusinessLogic.BusinessLogic
             Dictionary<int, List<PayViewModel>> pays = new Dictionary<int, List<PayViewModel>>();
             foreach (var education in educations)
             {
-                var EdPays = payLogic.Read(new PayBindingModel { EducationId = education.Id }).ToList();
-                pays.Add(education.Id, EdPays);
+                var EdPays = payLogic.Read(new PayBindingModel { EducationID = education.ID }).ToList();
+                pays.Add(education.ID, EdPays);
             }
             return pays;
         }
         public void SaveEducationPaysToPdfFile(string fileName, EducationBindingModel education, string email)
         {
-            string title = "Список обучений по курсам " + education.YearEd.ToString() + " по " + education.YearEd.ToString();
+            string title = "Список обучений по курсам " + education.YearED.ToString() + " по " + education.YearED.ToString();
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = fileName,
@@ -61,7 +61,7 @@ namespace UniversityBusinessLogic.BusinessLogic
         }
         public void SaveEducationCoursesToWordFile(string fileName, EducationViewModel education, string email)
         {
-            string title = "Список курсов по " + education.YearEd + " году обучения";
+            string title = "Список курсов по " + education.YearED + " году обучения";
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = fileName,
@@ -72,7 +72,7 @@ namespace UniversityBusinessLogic.BusinessLogic
         }
         public void SaveEducationCoursesToExcelFile(string fileName, EducationViewModel education, string email)
         {
-            string title = "Список курсов по " + education.YearEd + " году обучения";
+            string title = "Список курсов по " + education.YearED + " году обучения";
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = fileName,

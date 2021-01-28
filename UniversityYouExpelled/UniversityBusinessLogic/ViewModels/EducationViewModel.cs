@@ -11,29 +11,26 @@ namespace UniversityBusinessLogic.ViewModels
     public class EducationViewModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [DataMember]
-        public int ClientId { get; set; }
+        public int ClientID { get; set; }
         [DataMember]
         [DisplayName("Клиент")]
-        public string ClientFIO { get; set; }
+        public string FIO { get; set; }
         [DataMember]
         [DisplayName("Год обучения")]
-        public int YearEd { get; set; }
+        public int YearED { get; set; }
         [DataMember]
-        [DisplayName("Дата создания обучения")]
-        public DateTime EdCreate { get; set; }
-        [DataMember]
-        [DisplayName("Статус обучения")]
-        public string StatusEducation { get; set; }
+        [DisplayName("Дата создания")]
+        public DateTime DateCreate { get; set; }
         [DataMember]
         [DisplayName("Стоимость обучения")]
-        public decimal EdCost { get; set; }
+        public decimal CostED { get; set; }
         [DataMember]
-        [DisplayName("Статус")]
-        public EducationStatus Status { get; set; }
+        [DisplayName("Статус оплаты")]
+        public PayStatus PayStatus { get; set; }
         [DataMember]
-        [DisplayName("Оcтаток")]
+        [DisplayName("Осталось оплатить")]
         public decimal Remain { get; set; }
         [DataMember]
         public List<EducationCourseViewModel> EducationCourses { get; set; }

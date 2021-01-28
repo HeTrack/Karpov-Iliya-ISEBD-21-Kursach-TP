@@ -10,16 +10,18 @@ namespace UniversityBusinessLogic.ViewModels
     public class PayViewModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [DataMember]
-        public int ClientId { get; set; }
+        public int ClientID { get; set; }
         [DataMember]
-        public int EducationId { get; set; }
+        public int EducationID { get; set; }
+        [DataMember]
+        public int CourseID { get; set; }
         [DataMember]
         [DisplayName("Дата оплаты")]
-        public DateTime PayDate { get; set; }
+        public DateTime DatePay { get; set; }
         [DataMember]
         [DisplayName("Сумма оплаты")]
-        public decimal PaySum { get; set; }
+        public decimal SumPay { get; set; }
     }
 }

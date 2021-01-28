@@ -9,14 +9,16 @@ namespace UniversityBusinessLogic.BindingModels
     public class PayBindingModel
     {
         [DataMember]
-        public int? Id { get; set; }
+        public int? ID { get; set; }
         [DataMember]
-        public int EducationId { get; set; }
+        public int ClientID { get; set; }
         [DataMember]
-        public int ClientId { get; set; }       
+        public int EducationID { get; set; }
         [DataMember]
-        public DateTime PayDate{ get; set; }
+        public int CourseID { get; set; }       
         [DataMember]
-        public decimal PaySum { get; set; }
+        public DateTime DatePay { get; set; }
+        [DataMember]
+        public decimal SumPay { get; set; }
     }
 }

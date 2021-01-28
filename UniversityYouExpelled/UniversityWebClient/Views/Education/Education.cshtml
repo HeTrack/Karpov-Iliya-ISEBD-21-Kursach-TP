@@ -8,17 +8,39 @@
 
 }
 
-    <div class="text-center text-info">
-        <h1>Обучения</h1>       
-    </div>
+<div class="text-center text-info">
+    <h1>Обучения</h1>
+</div>
 <hr />
 <p>
     <strong>
         <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="CreateEducation">Сформировать</a>
-        <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="ChangeEducation">Изменить</a>
-        <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="DelEducation">Удалить</a>
+        @if (ViewBag.educations.Count != 0)
+        {
+            <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="ChangeEducation">Изменить</a>
+            <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="DelEducation">Удалить</a>
+        }
     </strong>
 </p>
+<hr />
+@using (Html.BeginForm())
+{
+    <p>
+        Выберите даты для отображения отчета по обучениям и оплатам
+    </p>
+    <p>
+        От: @Html.EditorFor(model => model.EdFrom)
+    </p>
+    <p>
+        До: @Html.EditorFor(model => model.EdTo)
+    </p>
+    <p>
+        @Html.EditorFor(model => model.SendMail) Отправить отчёт по путешествиям и оплатам на почту
+    </p>
+    <p>
+        <button type="submit" class="btn btn-info btn-sm">Получить</button>
+    </p>
+}
 <hr />
 @foreach (var education in ViewBag.educations)
 {
@@ -44,7 +66,7 @@
             </tr>
         }
     </table>
-    if (education.Status != UniversityBusinessLogic.Enums.EducationStatus.Принят && ViewBag.Pays != null)
+    if (education.Status != UniversityBusinessLogic.Enums.PayStatus.Принят && ViewBag.Pays != null)
     {
         <p>Платежи:</p>
         <table class="table">
@@ -65,14 +87,14 @@
         </table>
     }
     <hr />
-    if (education.Status == UniversityBusinessLogic.Enums.EducationStatus.Оплачен)
+    if (education.Status == UniversityBusinessLogic.Enums.PayStatus.Оплачен)
     {
         <p>Полностью оплачено</p>
         <hr />
     }
     else
     {
-        if (education.Status == UniversityBusinessLogic.Enums.EducationStatus.Частично_Оплачен)
+        if (education.Status == UniversityBusinessLogic.Enums.PayStatus.Частично_Оплачен)
         {
             <p>К оплате: @education.Remain</p>
             <hr />

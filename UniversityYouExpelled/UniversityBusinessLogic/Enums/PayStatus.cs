@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UniversityBusinessLogic.Enums
 {
-   public enum EducationStatus
+   public enum PayStatus
     {
         Принят = 0,   
         Частично_Оплачен  = 1,

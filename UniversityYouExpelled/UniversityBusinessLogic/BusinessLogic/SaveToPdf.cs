@@ -21,7 +21,7 @@ namespace UniversityBusinessLogic.BusinessLogic
             paragraph.Style = "NormalTitle";
             foreach (var education in info.Educations)
             {
-                var edLabel = section.AddParagraph("Курс №" + education.Id + " от " + education.EdCreate.ToShortDateString());
+                var edLabel = section.AddParagraph("Курс №" + education.ID + " от " + education.DateCreate.ToShortDateString());
                 edLabel.Style = "NormalTitle";
                 edLabel.Format.SpaceBefore = "1cm";
                 edLabel.Format.SpaceAfter = "0,25cm";
@@ -46,7 +46,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                     CreateRow(new PdfRowParameters
                     {
                         Table = courseTable,
-                        Texts = new List<string> { i.ToString(), course.CourseName, course.LecturerFIO, course.StartCourse.ToString(), course.Cost.ToString() },
+                        Texts = new List<string> { i.ToString(), course.Name, course.Lecturer, course.DateStart.ToString(), course.Cost.ToString() },
                         Style = "Normal",
                         ParagraphAlignment = ParagraphAlignment.Left
                     });
@@ -56,16 +56,16 @@ namespace UniversityBusinessLogic.BusinessLogic
                 CreateRow(new PdfRowParameters
                 {
                     Table = courseTable,
-                    Texts = new List<string> { "", "", "", "", "", "Итого:", education.EdCost.ToString() },
+                    Texts = new List<string> { "", "", "", "", "", "Итого:", education.CostED.ToString() },
                     Style = "Normal",
                     ParagraphAlignment = ParagraphAlignment.Left
                 });
-                if (education.Status == EducationStatus.Принят)
+                if (education.PayStatus == PayStatus.Принят)
                 {
                     CreateRow(new PdfRowParameters
                     {
                         Table = courseTable,
-                        Texts = new List<string> { "", "", "", "", "", "К оплате:", education.EdCost.ToString() },
+                        Texts = new List<string> { "", "", "", "", "", "К оплате:", education.CostED.ToString() },
                         Style = "Normal",
                         ParagraphAlignment = ParagraphAlignment.Left
                     });
@@ -80,7 +80,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                         ParagraphAlignment = ParagraphAlignment.Left
                     });
                 }
-                if (info.Pays[education.Id].Count == 0)
+                if (info.Pays[education.ID].Count == 0)
                 {
                     continue;
                 }
@@ -100,12 +100,12 @@ namespace UniversityBusinessLogic.BusinessLogic
                     ParagraphAlignment = ParagraphAlignment.Center
                 });
                 i = 1;
-                foreach (var pay in info.Pays[education.Id])
+                foreach (var pay in info.Pays[education.ID])
                 {
                     CreateRow(new PdfRowParameters
                     {
                         Table = payTable,
-                        Texts = new List<string> { i.ToString(), pay.PayDate.ToString(), pay.PaySum.ToString() },
+                        Texts = new List<string> { i.ToString(), pay.DatePay.ToString(), pay.SumPay.ToString() },
                         Style = "Normal",
                         ParagraphAlignment = ParagraphAlignment.Left
                     });

@@ -10,20 +10,21 @@ namespace UniversityBusinessLogic.BindingModels
     public class EducationBindingModel
     {
         [DataMember]
-        public int? Id { get; set; }
+        public int? ID { get; set; }
         [DataMember]
-        public int ClientId { get; set; }
+        public int ClientID { get; set; }
         [DataMember]
-        public DateTime EdCreate { get; set; }
+        public int YearED { get; set; }
         [DataMember]
-        public int YearEd { get; set; }
+        public DateTime DateCreate { get; set; }
         [DataMember]
-        public decimal EdCost { get; set; }
-        [DataMember]       
+        public decimal CostED { get; set; }
+        [DataMember]
+        public PayStatus PayStatus { get; set; }
         public decimal Remain { get; set; }
+        public int From;
+        public int To;
         [DataMember]
-        public EducationStatus Status { get; set; }
-        [DataMember]
-        public List<EducationCourseBindingModel> EducationCourses { get; set; }
+        public List<EducationCourseBindingModel> EducationCourses { get; set; } 
     }
 }

@@ -11,18 +11,22 @@ namespace UniversityDataBaseImplement.Models
 {
     public class Education
     {
-        public int Id { get; set; }       
-        public int ClientId { get; set; }       
-        public DateTime EdCreate { get; set; }
-        public int YearEd { get; set; }
-        public string StatusEducation { get; set; }
+        public int ID { get; set; }
         [Required]
-        public decimal EdCost { get; set; }
-        public EducationStatus Status { get; set; }
-        [ForeignKey("EducationId")]
+        public int ClientID { get; set; }
+        [Required]
+        public int YearED { get; set; }
+        [Required]
+        public DateTime DateCreate { get; set; }
+        [Required]
+        public decimal CostED { get; set; }
+        [Required]
+        public PayStatus PayStatus { get; set; }
+        [Required]
+        [ForeignKey("EducationID")]
         public virtual List<EducationCourse> EducationCourses { get; set; }
         [Required]
-        [ForeignKey("EducationId")]
+        [ForeignKey("EducationID")]
         public List<Pay> Pays { get; set; }
         public Client Client { get; set; }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Text;
+using UniversityBusinessLogic.Enums;
 
 namespace UniversityBusinessLogic.ViewModels
 {
@@ -10,30 +11,33 @@ namespace UniversityBusinessLogic.ViewModels
     public class ClientViewModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [DataMember]
         [DisplayName("ФИО")]
-        public string ClientFIO { get; set; }
+        public string FIO { get; set; }
         [DataMember]
-        [DisplayName("Почта")]
-        public string Email { get; set; }
+        [DisplayName("Год Обучения")]
+        public int Year { get; set; }
+        [DataMember]
         [DisplayName("Логин")]
         public string Login { get; set; }
-        [DataMember]
-        [DisplayName("Номер Курса обучения")]
-        public int CourseNum { get; set; }
-        [DataMember]
-        [DisplayName("Номер телефона")]
-        public string Phone { get; set; }
         [DataMember]
         [DisplayName("Пароль")]
         public string Password { get; set; }
         [DataMember]
-        [DisplayName("Дата регистрации")]
-        public DateTime DateRegistration { get; set; }
+        [DisplayName("Пользователь")]
+        public string UserType { get; set; }
         [DataMember]
-        [DisplayName("Блокировка")]
-        public bool BlockStatus { get; set; }
-             
+        [DisplayName("Статус Блокировки")]
+        public BlockStatus BlockStatus { get; set; }
+        [DataMember]
+        [DisplayName("Номер телефона")]
+        public string Phone { get; set; }
+        [DataMember]
+        [DisplayName("Почта")]
+        public string Email { get; set; }
+        [DataMember]
+        [DisplayName("DateRegister")]
+        public DateTime DateRegister { get; set; }
     }
 }

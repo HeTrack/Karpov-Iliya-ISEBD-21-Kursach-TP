@@ -10,15 +10,17 @@ namespace UniversityDataBaseImplement.Models
 {
    public class Course
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         [Required]
-        public int CourseYear { get; set; }
+        public int Year { get; set; }
         [Required]
-        public string CourseName { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string LecturerFIO { get; set; }
+        public string Lecturer { get; set; }
         [Required]
-        public DateTime StartCourse { get; set; }
+        public DateTime DateStart { get; set; }
+        [Required]
+        public int Duration { get; set; }
         [Required]
         public decimal Cost { get; set; }
     }

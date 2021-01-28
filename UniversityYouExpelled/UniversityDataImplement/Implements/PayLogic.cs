@@ -16,11 +16,11 @@ namespace UniversityDataBaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Pay elem = model.Id.HasValue ? null : new Pay();
-                if (model.Id.HasValue)
+                Pay elem = model.ID.HasValue ? null : new Pay();
+                if (model.ID.HasValue)
                 {
-                    elem = context.Pays.FirstOrDefault(rec => rec.Id ==
-                       model.Id);
+                    elem = context.Pays.FirstOrDefault(rec => rec.ID ==
+                       model.ID);
                     if (elem == null)
                     {
                         throw new Exception("Элемент не найден");
@@ -31,10 +31,10 @@ namespace UniversityDataBaseImplement.Implements
                     elem = new Pay();
                     context.Pays.Add(elem);
                 }
-                elem.EducationId = model.EducationId;
-                elem.ClientId = model.ClientId;
-                elem.PaySum = model.PaySum;
-                elem.PayDate = model.PayDate;
+                elem.EducationID = model.EducationID;
+                elem.ClientID = model.ClientID;
+                elem.SumPay = model.SumPay;
+                elem.DatePay = model.DatePay;
                 context.SaveChanges();
             }
         }
@@ -42,8 +42,8 @@ namespace UniversityDataBaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Pay elem = context.Pays.FirstOrDefault(rec => rec.Id ==
-               model.Id);
+                Pay elem = context.Pays.FirstOrDefault(rec => rec.ID ==
+               model.ID);
                 if (elem != null)
                 {
                     context.Pays.Remove(elem);
@@ -61,14 +61,14 @@ namespace UniversityDataBaseImplement.Implements
             using (var context = new UniversityDatabase())
             {
                 return context.Pays
-                .Where(rec => model == null || rec.Id == model.Id || rec.EducationId.Equals(model.EducationId))
+                .Where(rec => model == null || rec.ID == model.ID || rec.EducationID.Equals(model.EducationID))
                 .Select(rec => new PayViewModel
                 {
-                    Id = rec.Id,
-                    ClientId = rec.ClientId,
-                    PayDate = rec.PayDate,
-                    EducationId = rec.EducationId,
-                    PaySum = rec.PaySum
+                    ID = rec.ID,
+                    ClientID = rec.ClientID,
+                    DatePay = rec.DatePay,
+                    EducationID = rec.EducationID,
+                    SumPay = rec.SumPay
                 })
                 .ToList();
             }

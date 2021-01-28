@@ -16,10 +16,10 @@ namespace UniversityDataBaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Client elem = model.Id.HasValue ? null : new Client();
-                if (model.Id.HasValue)
+                Client elem = model.ID.HasValue ? null : new Client();
+                if (model.ID.HasValue)
                 {
-                    elem = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
+                    elem = context.Clients.FirstOrDefault(rec => rec.ID == model.ID);
                     if (elem == null)
                     {
                         throw new Exception("Элемент не найден");
@@ -29,14 +29,16 @@ namespace UniversityDataBaseImplement.Implements
                 {
                     elem = new Client();
                     context.Clients.Add(elem);
-                }               
+                }
+                elem.FIO = model.FIO;
+                elem.Year = model.Year;
                 elem.Login = model.Login;
-                elem.ClientFIO = model.ClientFIO;
-                elem.CourseNum = model.CourseNum;
-                elem.Email = model.Email;
-                elem.Phone = model.Phone;
-                elem.DataRegistration = model.DateRegistration;
                 elem.Password = model.Password;
+                elem.UserType = model.UserType;
+                elem.BlockStatus = model.BlockStatus;
+                elem.Phone = model.Phone;
+                elem.Email = model.Email;
+                elem.DateRegister = model.DateRegister;
                 context.SaveChanges();
             }
         }
@@ -44,8 +46,7 @@ namespace UniversityDataBaseImplement.Implements
         {
             using (var context = new UniversityDatabase())
             {
-                Client elem = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
-
+                Client elem = context.Clients.FirstOrDefault(rec => rec.ID == model.ID);
                 if (elem != null)
                 {
                     context.Clients.Remove(elem);
@@ -63,19 +64,21 @@ namespace UniversityDataBaseImplement.Implements
             {
                 return context.Clients
                  .Where(rec => model == null
-                   || rec.Id == model.Id
+                   || rec.ID == model.ID
                  || (rec.Login == model.Login || rec.Email == model.Email)
-                        && (model.Password == null || rec.Password == model.Password))
+                        && (rec.Password == model.Password))
                .Select(rec => new ClientViewModel
                {
-                   Id = rec.Id,
+                   ID = rec.ID,
+                   FIO = rec.FIO,
+                   Year = rec.Year,
                    Login = rec.Login,
-                   ClientFIO = rec.ClientFIO,
-                   CourseNum = rec.CourseNum,
-                   Email = rec.Email,
                    Password = rec.Password,
+                   UserType = rec.UserType,
+                   BlockStatus = rec.BlockStatus,
                    Phone = rec.Phone,
-                   BlockStatus = rec.BlockStatus
+                   Email = rec.Email,
+                   DateRegister = rec.DateRegister
                })
                 .ToList();
             }

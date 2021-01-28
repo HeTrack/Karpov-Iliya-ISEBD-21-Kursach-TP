@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Text;
+using UniversityBusinessLogic.Enums;
 
 namespace UniversityBusinessLogic.ViewModels
 {
@@ -10,18 +11,28 @@ namespace UniversityBusinessLogic.ViewModels
     public class EducationCourseViewModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [DataMember]
-        public int? EducationId { get; set; }
+        public int? EducationID { get; set; }
         [DataMember] 
-        public int CourseId { get; set; }
+        public int CourseID { get; set; }
         [DataMember]
-        public string LecturerFIO { get; set; }
+        [DisplayName("Название курса")]
+        public string Name { get; set; }
         [DataMember]
-        public string CourseName { get; set; }
+        [DisplayName("Преподаватель")]
+        public string Lecturer { get; set; }
         [DataMember]
-        public DateTime StartCourse { get; set; }
+        [DisplayName("Дата начала курса")]
+        public DateTime DateStart { get; set; }
         [DataMember]
+        [DisplayName("Продолжительность курса")]
+        public int Duration { get; set; }
+        [DataMember]
+        [DisplayName("Стоимость")]
         public decimal Cost { get; set; }
+        [DataMember]
+        [DisplayName("Статус оплаты")]
+        public PayStatus PayStatus { get; set; }
     }
 }

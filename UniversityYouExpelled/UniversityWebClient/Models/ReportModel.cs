@@ -7,8 +7,8 @@ namespace UniversityWebClient.Models
 {
     public class ReportModel
     {
-        public int YearFrom { get; set; }
-        public int CourseTo { get; set; }
+        public int EdFrom { get; set; }
+        public int EdTo { get; set; }
         public bool SendMail { get; set; }
     }
 }

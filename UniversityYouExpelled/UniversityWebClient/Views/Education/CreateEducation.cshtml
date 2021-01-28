@@ -22,11 +22,11 @@
         @foreach (UniversityBusinessLogic.ViewModels.CourseViewModel course in ViewBag.EducationCourses)
         {
     <tr>
-        <td>@course.CourseName</td>
-        <td align="center">@course.LecturerFIO</td>
-        <td align="center">@course.StartCourse.ToShortDateString()</td>
+        <td>@course.Name</td>
+        <td align="center">@course.Lecturer</td>
+        <td align="center">@course.DateStart.ToShortDateString()</td>
         <td align="center">@course.Cost</td>
-        <td><input type="checkbox" name="Model.EducationCourses[@course.Id]" value="true" /></td>
+        <td><input type="checkbox" name="Model.EducationCourses[@course.ID]" value="true" /></td>
     </tr>
         }
     </table>

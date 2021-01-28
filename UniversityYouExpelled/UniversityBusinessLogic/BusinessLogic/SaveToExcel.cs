@@ -37,21 +37,22 @@ namespace UniversityBusinessLogic.BusinessLogic
                     Name = "Лист"
                 };
                 sheets.Append(sheet);
-                InsertCellInWorksheet(new ExcelCellParameters
-                {
-                    Worksheet = worksheetPart.Worksheet,
-                    ShareStringPart = shareStringPart,
-                    ColumnName = "A",
-                    RowIndex = 1,
-                    Text = info.Title,
-                    StyleIndex = 2U
-                });
                 MergeCells(new ExcelMergeParameters
                 {
                     Worksheet = worksheetPart.Worksheet,
                     CellFromName = "A1",
-                    CellToName = "Е1"
+                    CellToName = "E1"
                 });
+                InsertCellInWorksheet(new ExcelCellParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    ShareStringPart = shareStringPart,
+                    ColumnName = "A",                 
+                    RowIndex = 1,              
+                    Text = info.Title,
+                    StyleIndex = 2U
+                });
+               
                 InsertCellInWorksheet(new ExcelCellParameters
                 {
                     Worksheet = worksheetPart.Worksheet,
@@ -116,7 +117,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                         ShareStringPart = shareStringPart,
                         ColumnName = "B",
                         RowIndex = i + 2,
-                        Text = course.CourseName,
+                        Text = course.Name,
                         StyleIndex = 0U
                     });
                     InsertCellInWorksheet(new ExcelCellParameters
@@ -125,7 +126,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                         ShareStringPart = shareStringPart,
                         ColumnName = "C",
                         RowIndex = i + 2,
-                        Text = course.LecturerFIO,
+                        Text = course.Lecturer,
                         StyleIndex = 0U
                     });
                     InsertCellInWorksheet(new ExcelCellParameters
@@ -134,7 +135,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                         ShareStringPart = shareStringPart,
                         ColumnName = "D",
                         RowIndex = i + 2,
-                        Text = course.StartCourse.ToString(),
+                        Text = course.DateStart.ToString(),
                         StyleIndex = 0U
                     });
                     InsertCellInWorksheet(new ExcelCellParameters
@@ -192,27 +193,27 @@ namespace UniversityBusinessLogic.BusinessLogic
             borderNoBorder.Append(new BottomBorder());
             borderNoBorder.Append(new DiagonalBorder());
             Border borderThin = new Border();
-            LeftBorder leftBorder = new LeftBorder() { Style = BorderStyleValues.Thin };
+            LeftBorder leftBorder = new LeftBorder() { Style = BorderStyleValues.Medium };
             leftBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
             {
                 Indexed = (UInt32Value)64U
             });
             RightBorder rightBorder = new RightBorder()
             {
-                Style = BorderStyleValues.Thin
+                Style = BorderStyleValues.Medium
             };
             rightBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
             {
                 Indexed = (UInt32Value)64U
             });
-            TopBorder topBorder = new TopBorder() { Style = BorderStyleValues.Thin };
+            TopBorder topBorder = new TopBorder() { Style = BorderStyleValues.Medium };
             topBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
             {
                 Indexed = (UInt32Value)64U
             });
             BottomBorder bottomBorder = new BottomBorder()
             {
-                Style = BorderStyleValues.Thin
+                Style = BorderStyleValues.Medium
             };
             bottomBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
             {
@@ -234,7 +235,8 @@ namespace UniversityBusinessLogic.BusinessLogic
                 NumberFormatId = (UInt32Value)0U,
                 FontId = (UInt32Value)0U,
                 FillId = (UInt32Value)0U,
-                BorderId = (UInt32Value)0U
+                BorderId = (UInt32Value)0U,
+                ApplyBorder = true
             };
             cellStyleFormats.Append(cellFormatStyle);
             CellFormats cellFormats = new CellFormats() { Count = (UInt32Value)3U };
@@ -252,7 +254,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                 NumberFormatId = (UInt32Value)0U,
                 FontId = (UInt32Value)0U,
                 FillId = (UInt32Value)0U,
-                BorderId = (UInt32Value)1U,
+                BorderId = (UInt32Value)0U,
                 FormatId = (UInt32Value)0U,
                 ApplyFont = true,
                 ApplyBorder = true
@@ -280,7 +282,8 @@ namespace UniversityBusinessLogic.BusinessLogic
             {
                 Name = "Normal",
                 FormatId = (UInt32Value)0U,
-                BuiltinId = (UInt32Value)0U
+                BuiltinId = (UInt32Value)0U    
+                
             });
             DocumentFormat.OpenXml.Office2013.Excel.DifferentialFormats
             differentialFormats = new DocumentFormat.OpenXml.Office2013.Excel.DifferentialFormats()
@@ -291,7 +294,8 @@ namespace UniversityBusinessLogic.BusinessLogic
             {
                 Count = (UInt32Value)0U,
                 DefaultTableStyle = "TableStyleMedium2",
-                DefaultPivotStyle = "PivotStyleLight16"
+                DefaultPivotStyle = "PivotStyleLight16",
+               
             };
             StylesheetExtensionList stylesheetExtensionList = new StylesheetExtensionList();
             StylesheetExtension stylesheetExtension1 = new StylesheetExtension()

@@ -125,3 +125,11 @@ form label{
      margin: 0;
      top: -15px;
  }
+.gb-landing .home-page-header {
+    display: block;
+    min-height: auto;
+}
+
+.gb-landing header {
+    background-color: #f4f5fa;
+}

@@ -28,11 +28,11 @@ namespace UniversityDataBaseImplement.Implements
                 {
                     list.Add(new Course
                     {
-                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
-                        CourseYear = Convert.ToInt32(elem.Element("CourseYear").Value),
-                        CourseName = elem.Element("CourseName").Value,
-                        LecturerFIO = elem.Element("LecturerFIO").Value,
-                        StartCourse = Convert.ToDateTime(elem.Element("StartCourse").Value).Date,
+                        ID = Convert.ToInt32(elem.Attribute("Id").Value),
+                        Year = Convert.ToInt32(elem.Element("CourseYear").Value),
+                        Name = elem.Element("CourseName").Value,
+                        Lecturer = elem.Element("LecturerFIO").Value,
+                        DateStart = Convert.ToDateTime(elem.Element("StartCourse").Value).Date,
                         Cost = Convert.ToDecimal(elem.Element("Cost").Value),
                     });
                 }
@@ -46,7 +46,7 @@ namespace UniversityDataBaseImplement.Implements
             {
                 foreach (var course in courses)
                 {
-                    Course element = context.Courses.FirstOrDefault(rec => rec.CourseName == course.CourseName.ToString());
+                    Course element = context.Courses.FirstOrDefault(rec => rec.Name == course.Name.ToString());
                     if (element != null)
                     {
                         break;
@@ -56,10 +56,10 @@ namespace UniversityDataBaseImplement.Implements
                         element = new Course();
                         context.Courses.Add(element);
                     }
-                    element.CourseYear = course.CourseYear;
-                    element.CourseName = course.CourseName;
-                    element.LecturerFIO = course.LecturerFIO;
-                    element.StartCourse = course.StartCourse.Date;
+                    element.Year = course.Year;
+                    element.Name = course.Name;
+                    element.Lecturer = course.Lecturer;
+                    element.DateStart = course.DateStart.Date;
                     element.Cost = course.Cost;
                     context.SaveChanges();
                 }
@@ -70,14 +70,14 @@ namespace UniversityDataBaseImplement.Implements
             Database();
             using (var context = new UniversityDatabase())
             {
-                return context.Courses.Where(rec => model == null || rec.Id == model.Id)
+                return context.Courses.Where(rec => model == null || rec.ID == model.ID)
             .Select(rec => new CourseViewModel
             {
-                Id = rec.Id,
-                CourseYear = rec.CourseYear,
-                CourseName = rec.CourseName,
-                LecturerFIO = rec.LecturerFIO,
-                StartCourse = rec.StartCourse.Date,
+                ID = rec.ID,
+                Year = rec.Year,
+                Name = rec.Name,
+                Lecturer = rec.Lecturer,
+                DateStart = rec.DateStart.Date,
                 Cost = rec.Cost,
             })
             .ToList();

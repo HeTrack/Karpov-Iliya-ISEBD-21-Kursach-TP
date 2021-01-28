@@ -1,12 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-    <body style="height:80%;    background-image: url(../politeh.jpg) ; background-position:center ; background-size: 100% 100%; background-repeat:no-repeat">
-      
-            <div class="text-center">
-                <h1 class="display-4">Добро пожаловать</h1>
-                <p>Технический Университет "Все отчислены".</p>
+<head>
+<link rel="stylesheet" href="/css/test.css">
+    </head>
+<body>
+    <header class="header home-page-header">
+        <div class="header-container">
+            <div class="col">
+                <a class="logo home-page-header" href="">
+                    <i class="fas fa-user-graduate"></i>AllExpelledUniversity
+                </a>
             </div>
-    </body>
+            <div class="col">
+                <span class="total-users">Отчислено уже 10 925 человек</span>
+                <a class="btn sign-in" href="" style="margin-right: 20px;">Войти</a>
+                <a class="btn register" href="">Регистрация</a>
+            </div>
+        </div>
+    </header>
+    <div class="text-center">
+        <h1 class="display-4">Добро пожаловать</h1>
+        <p>Технический Университет "Все отчислены".</p>
+    </div>
+</body>
 
 

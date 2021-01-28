@@ -9,15 +9,17 @@ namespace UniversityBusinessLogic.BindingModels
     public class CourseBindingModel
     {
         [DataMember]
-        public int? Id { get; set; }
+        public int? ID { get; set; }
         [DataMember]
-        public int CourseYear { get; set; }
+        public int Year { get; set; }
         [DataMember]
-        public string LecturerFIO { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public string CourseName { get; set; }
+        public string Lecturer { get; set; }
         [DataMember]
-        public DateTime StartCourse { get; set; }
+        public DateTime DateStart { get; set; }
+        [DataMember]
+        public int Duration { get; set; }
         [DataMember]
         public decimal Cost { get; set; }
 

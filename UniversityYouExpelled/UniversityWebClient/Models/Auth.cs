@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UniversityWebClient.Models
 {
-    public class SignIn
+    public class Auth
     {
         [Required]
         public string Login { get; set; }

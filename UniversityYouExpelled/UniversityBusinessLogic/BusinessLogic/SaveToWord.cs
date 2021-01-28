@@ -56,9 +56,9 @@ namespace UniversityBusinessLogic.BusinessLogic
                 {
                     TableRow  courseRow = new TableRow();
                     TableCell numberCell = new TableCell(new Paragraph(new Run(new Text(i.ToString()))));
-                    TableCell nameCell = new TableCell(new Paragraph(new Run(new Text(course.CourseName))));
-                    TableCell LectureFIOCell = new TableCell(new Paragraph(new Run(new Text(course.LecturerFIO))));
-                    TableCell StartCourseCell = new TableCell(new Paragraph(new Run(new Text(course.StartCourse.ToString()))));                    
+                    TableCell nameCell = new TableCell(new Paragraph(new Run(new Text(course.Name))));
+                    TableCell LectureFIOCell = new TableCell(new Paragraph(new Run(new Text(course.Lecturer))));
+                    TableCell StartCourseCell = new TableCell(new Paragraph(new Run(new Text(course.DateStart.ToString()))));                    
                     TableCell costCell = new TableCell(new Paragraph(new Run(new Text(course.Cost.ToString()))));
                     courseRow.Append(numberCell);
                     courseRow.Append(nameCell);

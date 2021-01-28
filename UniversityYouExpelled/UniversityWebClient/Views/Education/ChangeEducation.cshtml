@@ -20,19 +20,24 @@
         </tr>
         @foreach (UniversityBusinessLogic.ViewModels.CourseViewModel course in ViewBag.EducationCourses)
         {
-            <tr>
-                <td>@course.CourseName</td>
-                <td align="center">@course.LecturerFIO</td>
-                <td align="center">@course.StartCourse.ToShortDateString()</td>
-                <td align="center">@course.Cost</td>
-                @{
-                    string check = "";
-                    EducationViewModel find = ViewBag.educations[ViewBag.educations.Count - 1];
-                   if(find.EducationCourses.Find( x => x.CourseName == course.CourseName)!=null)
-check = "checked";
-}
-                <td><input type="checkbox" name="Model.EducationCourses[@course.Id]" value="true" checked="@check"/></td>
-            </tr>
+    <tr>
+        <td>@course.Name</td>
+        <td align="center">@course.Lecturer</td>
+        <td align="center">@course.DateStart.ToShortDateString()</td>
+        <td align="center">@course.Cost</td>
+        @{           
+            UniversityBusinessLogic.ViewModels.EducationViewModel find = ViewBag.educations;
+            if (find.EducationCourses.Find(x => x.Name == course.Name) != null)
+            {            
+                <td><input type="checkbox" name="Model.EducationCourses[@course.ID]" value="true" checked /></td>
+            }
+            else
+            {
+                <td><input type="checkbox" name="Model.EducationCourses[@course.ID]" value="true"  /></td>
+            }
+        }
+        
+    </tr>
         }
     </table>
     <button type="submit" class="btn btn-info btn-sm">Создать</button>

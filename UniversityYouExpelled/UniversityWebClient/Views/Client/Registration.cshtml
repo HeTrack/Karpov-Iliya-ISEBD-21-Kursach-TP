@@ -21,6 +21,11 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="FIO" class="control-label">ФИО</label>
+                <input asp-for="FIO" class="form-control" />
+                <span asp-validation-for="FIO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Email" class="control-label">Почта</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -29,11 +34,6 @@
                 <label asp-for="Phone" class="control-label">Номер телефона</label>
                 <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientFIO" class="control-label">ФИО</label>
-                <input asp-for="ClientFIO" class="form-control" />
-                <span asp-validation-for="ClientFIO" class="text-danger"></span>
             </div>
             @Html.ValidationSummary(true, "", new { @style = "color: red" })
             <div class="form-group">

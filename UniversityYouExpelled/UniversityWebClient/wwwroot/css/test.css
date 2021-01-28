@@ -1,0 +1,66 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto,San Francisco,Helvetica Neue,Helvetica,Arial;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    background: url(/politeh.jpg) no-repeat center fixed;
+    background-size: 100%;
+}
+
+a {
+    /* Отменяем подчеркивание у ссылки */
+    text-decoration: none;
+    color: #50667b;
+    font-weight: 600;
+}
+
+.home-page-header i {
+    font-size: 20px;
+    color: #50667b;
+    padding: 0 10px 0 0;
+}
+
+header {
+    display: block;
+    background-color: #f4f5fa;
+    color: #50667b;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.home-page-header a.btn.sign-in,
+.home-page-header a.btn.register {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    padding: 8px;
+    width: 120px;
+    text-align: center;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    transition: .5s;
+}
+
+    .home-page-header a.btn.sign-in:hover,
+    .home-page-header a.btn.register:hover {
+        background-position: right center;
+    }
+
+.home-page-header .total-users {
+    margin-right: 32px;
+}

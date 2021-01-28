@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using UniversityBusinessLogic.Enums;
 
 namespace UniversityBusinessLogic.BindingModels
 {
@@ -9,22 +10,24 @@ namespace UniversityBusinessLogic.BindingModels
     public class ClientBindingModel
     {
         [DataMember]
-        public int? Id { get; set; }
+        public int? ID { get; set; }
         [DataMember]
-        public string ClientFIO { get; set; }
+        public string FIO { get; set; }
         [DataMember]
-        public string Email { get; set; }
+        public int Year { get; set; }
         [DataMember]
         public string Login { get; set; }
         [DataMember]
-        public int CourseNum { get; set; }
-        [DataMember]
-        public string Phone{ get; set; }
-        [DataMember]
         public string Password { get; set; }
         [DataMember]
-        public DateTime DateRegistration { get; set; }
+        public string UserType { get; set; }
         [DataMember]
-        public  bool BlockStatus { get; set; }
+        public BlockStatus BlockStatus {get; set;}
+        [DataMember]
+        public string Phone { get; set; }
+        [DataMember]
+        public string Email { get; set; }
+        [DataMember]
+        public DateTime DateRegister { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace UniversityWebClient.Controllers
         {
             ViewBag.Educations = edLogic.Read(new EducationBindingModel
             {
-                ClientId = Program.Client.Id        
+                ClientID = Program.Client.ID        
             });
             return View();
         }
@@ -40,17 +40,16 @@ namespace UniversityWebClient.Controllers
             var payList = new List<PayViewModel>();
             var educations = edLogic.Read(new EducationBindingModel
             {
-                ClientId = Program.Client.Id,              
-               // YearEd = model.YearFrom
-                // DateFrom = model.From,
-                // DateTo = model.To
+                ClientID = Program.Client.ID,
+                From = model.EdFrom,
+                To = model.EdTo
             });
             var pays = payLogic.Read(null);
             foreach (var ed in educations)
             {
                 foreach (var pay in pays)
                 {
-                    if (pay.ClientId == Program.Client.Id && pay.EducationId == ed.Id)
+                    if (pay.ClientID == Program.Client.ID && pay.EducationID == ed.ID)
                         payList.Add(pay);
                 }
             }
@@ -61,7 +60,7 @@ namespace UniversityWebClient.Controllers
             {
                 reportLogic.SaveEducationPaysToPdfFile(fileName, new EducationBindingModel
                 {
-                    ClientId = Program.Client.Id,
+                    ClientID = Program.Client.ID,
                     //YearEd = model.YearFrom
                     //DateFrom = model.From,
                     // DateTo = model.To
@@ -73,9 +72,10 @@ namespace UniversityWebClient.Controllers
         {
             ViewBag.Educations = edLogic.Read(new EducationBindingModel
             {
-                ClientId = Program.Client.Id
-            });
-            ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.CourseYear == Program.Client.CourseNum);
+                ClientID = Program.Client.ID,
+                YearED = Program.Client.Year
+            }).FirstOrDefault();
+            ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.Year == Program.Client.Year);
             ViewBag.User = Program.Client;
             return View();
         }
@@ -84,7 +84,7 @@ namespace UniversityWebClient.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.CourseYear == Program.Client.CourseNum);
+                ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.Year == Program.Client.Year);
                 return View(model);
             }
 
@@ -96,7 +96,7 @@ namespace UniversityWebClient.Controllers
                 {
                     edCourses.Add(new EducationCourseBindingModel
                     {
-                        CourseId = course.Key
+                        CourseID = course.Key
                     });
                 }
             }
@@ -108,19 +108,33 @@ namespace UniversityWebClient.Controllers
                 return View(model);
             }
             edLogic.CreateOrUpdate(new EducationBindingModel
-            {
-                ClientId = Program.Client.Id,
-                EdCreate = DateTime.Now,
-                Status = EducationStatus.Принят,
-                EdCost = CalculateSum(edCourses),
-                YearEd = Program.Client.CourseNum,
+            {           
+                ClientID = Program.Client.ID,
+                DateCreate = DateTime.Now,
+                PayStatus = PayStatus.Принят,
+                CostED = CalculateSum(edCourses),
+                YearED = Program.Client.Year,
                 EducationCourses = edCourses
             });
             return RedirectToAction("Education");
+            
         }
+
+        public IActionResult DelEducation()
+        {
+         
+                edLogic.Delete(new EducationBindingModel
+                {
+                    ClientID = Program.Client.ID,
+                    YearED = Program.Client.Year
+                });
+                     
+            return RedirectToAction("Education");
+        }
+        
         public IActionResult CreateEducation()
         {
-            ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.CourseYear == Program.Client.CourseNum);
+            ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.Year == Program.Client.Year);
             ViewBag.User = Program.Client;
             return View();
         }
@@ -129,7 +143,7 @@ namespace UniversityWebClient.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.CourseYear == Program.Client.CourseNum);
+                ViewBag.EducationCourses = courseLogic.Read(null).Where(rec => rec.Year == Program.Client.Year);
                 return View(model);
             }
 
@@ -141,7 +155,7 @@ namespace UniversityWebClient.Controllers
                 {
                     edCourses.Add(new EducationCourseBindingModel
                     {                                    
-                        CourseId = course.Key              
+                        CourseID = course.Key              
                     });
                 }
             }
@@ -154,11 +168,11 @@ namespace UniversityWebClient.Controllers
             }
             edLogic.CreateOrUpdate(new EducationBindingModel
             {
-                ClientId = Program.Client.Id,
-                EdCreate = DateTime.Now,
-                Status = EducationStatus.Принят,
-                EdCost = CalculateSum(edCourses),
-                YearEd = Program.Client.CourseNum,
+                ClientID = Program.Client.ID,
+                DateCreate = DateTime.Now,
+                PayStatus = PayStatus.Принят,
+                CostED = CalculateSum(edCourses),
+                YearED = Program.Client.Year,
                 EducationCourses = edCourses
             });
             return RedirectToAction("Education");
@@ -169,7 +183,7 @@ namespace UniversityWebClient.Controllers
 
             foreach (var course in edCourses)
             {
-                var courseData = courseLogic.Read(new CourseBindingModel { Id = course.CourseId }).FirstOrDefault();
+                var courseData = courseLogic.Read(new CourseBindingModel { ID = course.CourseID }).FirstOrDefault();
 
                 if (courseData != null)
                 {                    
@@ -183,7 +197,7 @@ namespace UniversityWebClient.Controllers
         {
             var education = edLogic.Read(new EducationBindingModel
             {
-                Id = id
+                ID = id
             }).FirstOrDefault();
             ViewBag.Education = education;
             ViewBag.Remain = CalculateRemain(education);
@@ -194,7 +208,7 @@ namespace UniversityWebClient.Controllers
         {
             EducationViewModel education = edLogic.Read(new EducationBindingModel
             {
-                Id = model.EducationId
+                ID = model.EducationId
             }).FirstOrDefault();
            decimal Remain = CalculateRemain(education);
             if (!ModelState.IsValid)
@@ -211,24 +225,25 @@ namespace UniversityWebClient.Controllers
             }
             payLogic.CreateOrUpdate(new PayBindingModel
             {
-                EducationId = education.Id,
-                ClientId = Program.Client.Id,
-                PayDate = DateTime.Now,
-                PaySum = model.PaySum
+                EducationID = education.ID,
+                ClientID = Program.Client.ID,
+                DatePay = DateTime.Now,
+                SumPay = model.PaySum
             });
             Remain -= model.PaySum;
             edLogic.CreateOrUpdate(new EducationBindingModel
             {
-                Id = education.Id,
-                ClientId = education.ClientId,
-                EdCreate = education.EdCreate,             
-                Status = Remain > 0 ? EducationStatus.Частично_Оплачен : EducationStatus.Оплачен,
-                EdCost = education.EdCost,
+                ID = education.ID,
+                ClientID = education.ClientID,
+                YearED = education.YearED,
+                DateCreate = education.DateCreate,             
+                PayStatus = Remain > 0 ? PayStatus.Частично_Оплачен : PayStatus.Оплачен,
+                CostED = education.CostED,
                 EducationCourses = education.EducationCourses.Select(rec => new EducationCourseBindingModel
                 {
-                    Id = rec.Id,
-                    EducationId = rec.EducationId,
-                    CourseId = rec.CourseId,
+                    ID = rec.ID,
+                    EducationID = rec.EducationID,
+                    CourseID = rec.CourseID,
                 }).ToList()
             });
             return RedirectToAction("Education");
@@ -236,25 +251,25 @@ namespace UniversityWebClient.Controllers
 
         private decimal CalculateRemain(EducationViewModel education)
         {
-            decimal sum = education.EdCost;
+            decimal sum = education.CostED;
             decimal paidSum = payLogic.Read(new PayBindingModel
             {
-               EducationId = education.Id
-            }).Select(rec => rec.PaySum).Sum();
+               EducationID = education.ID
+            }).Select(rec => rec.SumPay).Sum();
 
             return sum - paidSum;
         }
         public IActionResult SendWordReport(int id)
         {
-            var education = edLogic.Read(new EducationBindingModel { Id = id }).FirstOrDefault();
-            string fileName = "D:\\Kursach TP\\" + education.Id + ".docx";
+            var education = edLogic.Read(new EducationBindingModel { ID = id }).FirstOrDefault();
+            string fileName = "D:\\Kursach TP\\" + education.ID + ".docx";
             reportLogic.SaveEducationCoursesToWordFile(fileName, education, Program.Client.Email);
             return RedirectToAction("Education");
         }
         public IActionResult SendExcelReport(int id)
         {
-            var education = edLogic.Read(new EducationBindingModel { Id = id }).FirstOrDefault();
-            string fileName = "D:\\Kursach TP\\" + education.Id + ".xlsx";
+            var education = edLogic.Read(new EducationBindingModel { ID = id }).FirstOrDefault();
+            string fileName = "D:\\Kursach TP\\" + education.ID + ".xlsx";
             reportLogic.SaveEducationCoursesToExcelFile(fileName, education, Program.Client.Email);
             return RedirectToAction("Education");
         }

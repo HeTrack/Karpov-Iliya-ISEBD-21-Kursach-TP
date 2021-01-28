@@ -9,14 +9,17 @@ namespace UniversityDataBaseImplement.Models
 {
   public  class Pay
     {
-        public int Id { get; set; }
-        public int ClientId { get; set; }
+        public int ID { get; set; }
         [Required]
-        public int EducationId { get; set; }
+        public int ClientID { get; set; }
         [Required]
-        public DateTime PayDate { get; set; }
+        public int EducationID { get; set; }
         [Required]
-        public decimal PaySum { get; set; }
+        public int CourseID { get; set; }
+        [Required]
+        public DateTime DatePay { get; set; }
+        [Required]
+        public decimal SumPay { get; set; }
         public virtual Education Education { get; set; }
         public virtual Client Client { get; set; }
     }
