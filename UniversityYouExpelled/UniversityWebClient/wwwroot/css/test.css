@@ -8,8 +8,6 @@ body {
     font-weight: 400;
     font-size: 15px;
     line-height: 24px;
-    background: url(/politeh.jpg) no-repeat center fixed;
-    background-size: 100%;
 }
 
 a {
@@ -27,6 +25,7 @@ a {
 
 header {
     display: block;
+    min-height: auto;
     background-color: #f4f5fa;
     color: #50667b;
 }
@@ -63,4 +62,246 @@ header {
 
 .home-page-header .total-users {
     margin-right: 32px;
+}
+
+/*Главная страница клиента*/
+.main-wrapper {
+    margin-left: 96px;
+}
+
+.left-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 96px;
+    background-color: rgba(164,175,221,.2);
+}
+
+.left-menu-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 96px;
+}
+
+    .left-menu-logo svg {
+        width: 48px;
+        height: 48px;
+        transition: transform .2s;
+    }
+
+        .left-menu-logo svg:hover {
+            transform: scale(1.05);
+        }
+
+.left-menu-item {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .2s;
+    height: 66px;
+    padding: 8px 0;
+    color: #50667b;
+    opacity: .4;
+    display: flex;
+    flex-direction: column;
+}
+
+    .left-menu-item i {
+        font-size: 25px;
+        color: #50667b;
+    }
+
+    .left-menu-item:hover {
+        background-color: inherit;
+        color: #50667b;
+        opacity: 1;
+    }
+
+.main-top-menu {
+    height: 96px;
+    padding: 0 32px;
+    background-color: #fff;
+}
+
+.top-menu-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    margin: 0 16px 0 0;
+    font-weight: 400;
+}
+
+.top-menu {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin: 0;
+}
+
+.dropdown {
+    list-style: none;
+    position: relative;
+}
+
+    .dropdown > a {
+        width: 100px;
+        display: flex;
+        align-items: center;
+        transition: color .2s;
+        height: 100%;
+    }
+
+.user-avatar-image {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+img {
+    vertical-align: middle;
+}
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+    right: -28px;
+    min-width: 200px;
+    padding: 0;
+    font-size: 13px;
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    border: 1px solid rgba(0,0,0,.1);
+    position: absolute;
+    display: none;
+    list-style: none;
+    background-color: #fff;
+}
+    /* Изменение цвета выпадающих ссылок при наведении курсора */
+    .dropdown-content > li a:hover {
+        background: #e5f3fe !important;
+    }
+/* Показать выпадающее меню (используйте JS, чтобы добавить этот класс .dropdown-content содержимого, когда пользователь нажимает на кнопку выпадающего списка) */
+.show {
+    display: block;
+}
+/* Ссылки внутри выпадающего списка */
+.dropdown-content > li a {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #2c2d30;
+    display: block;
+    font-weight: 400;
+    line-height: 1.428571429;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e5e5e5;
+}
+
+.arrow.top {
+    left: 115px;
+    position: absolute;
+    border: 8px solid transparent;
+    top: -8px;
+    border-top-width: 0;
+    border-bottom-color: #fff;
+}
+
+.button-wrapper {
+    padding: 0 32px;
+    background-color: #f4f5fa;
+}
+
+.button-form {
+    padding: 28px 16px;
+}
+
+.gb-nav-tabs-wrapper {
+    padding: 0 32px;
+}
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.nav-tabs {
+    display: flex;
+}
+
+.nav.nav-tabs li.active {
+    border-bottom: 4px solid #6f64e9;
+    text-decoration: none;
+}
+
+.nav.nav-tabs li {
+    transition: border-bottom .2s;
+    border-bottom: 4px solid transparent;
+}
+
+.nav-tabs li {
+    display: flex;
+}
+
+.nav.nav-tabs li.active a {
+    color: #2c2d30;
+}
+
+.nav-tabs li a {
+    color: #2c2d30;
+    padding: 20px 0;
+    font-size: 17px;
+}
+
+.tab-pane {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.profession-block_compact {
+    padding-bottom: 64px;
+}
+
+.container-wide {
+    padding-right: 32px;
+    padding-left: 32px;
+}
+
+.profession-block_compact .profession-block__titles {
+    display: flex;
+    align-items: center;
+}
+
+.profession-block_compact .profession-block__title {
+    margin-right: 24px;
+    margin-bottom: 8px;
+}
+
+.profession-block__title {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+    margin: 0;
+    color: #50667b;
+}
+
+.profession-block_compact .profession-block__subtitle {
+    margin-bottom: 0;
+    color: rgba(80,102,123,.5);
+}
+
+p {
+    margin: 0 0 10px;
 }

@@ -66,7 +66,7 @@ namespace UniversityDataBaseImplement.Implements
                  .Where(rec => model == null
                    || rec.ID == model.ID
                  || (rec.Login == model.Login || rec.Email == model.Email)
-                        && (rec.Password == model.Password))
+                        && (model.Password == null || rec.Password == model.Password))
                .Select(rec => new ClientViewModel
                {
                    ID = rec.ID,

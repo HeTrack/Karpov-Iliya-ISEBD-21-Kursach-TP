@@ -26,6 +26,15 @@ namespace UniversityWebClient.Controllers
             this.payLogic = payLogic;
             this.reportLogic = reportLogic;
         }
+        public IActionResult CurrentEducation()
+        {
+           /* ViewBag.Education = edLogic.Read(new EducationBindingModel
+            {
+                ClientID = Program.Client.ID,
+                YearED = Program.Client.Year
+            });*/
+            return View();
+        }
         public IActionResult Education()
         {
             ViewBag.Educations = edLogic.Read(new EducationBindingModel

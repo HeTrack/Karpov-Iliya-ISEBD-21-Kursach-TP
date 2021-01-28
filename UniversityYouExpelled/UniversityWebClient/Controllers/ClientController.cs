@@ -45,8 +45,14 @@ namespace UniversityWebClient.Controllers
                 ModelState.AddModelError("", "Вы ввели неверный пароль, либо пользователь не найден");
                 return View(client);
             }
-            Program.Client = clientView;         
-                return RedirectToAction("Index", "Home");          
+            if (clientView.UserType == "Аdmin")
+            {
+                return RedirectToAction("AdminMain", "Client");
+            }
+            else
+            {
+                return RedirectToAction("CurrentEducation", "Education");
+            }
         }
         public IActionResult Logout()
         {
@@ -118,7 +124,7 @@ namespace UniversityWebClient.Controllers
                 ModelState.AddModelError("", "Введите номер телефона");
                 return View(newClient);
             }
-            if (!Regex.IsMatch(newClient.Phone, @"^((8 |\+7)[\- ]?)?(\(?\d{ 3}\)?[\- ]?)?[\d\- ]{ 7,10}$"))
+            if (!Regex.IsMatch(newClient.Phone, @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"))
             {
                 ModelState.AddModelError("", "Номер телефона введен некорректно");
                 return View(newClient);

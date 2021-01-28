@@ -3,19 +3,19 @@
 }
 <head>
 <link rel="stylesheet" href="/css/test.css">
-    </head>
-<body>
+</head>
+<body style="margin: 0; font-family: Roboto,San Francisco,Helvetica Neue,Helvetica,Arial; font-weight: 400; font-size: 15px; line-height: 24px; background: url(/politeh.jpg) no-repeat center fixed; background-size: 100%;">
     <header class="header home-page-header">
         <div class="header-container">
             <div class="col">
-                <a class="logo home-page-header" href="">
+                <a class="logo home-page-header" asp-controller="Home" asp-action="Index">
                     <i class="fas fa-user-graduate"></i>AllExpelledUniversity
                 </a>
             </div>
             <div class="col">
                 <span class="total-users">Отчислено уже 10 925 человек</span>
-                <a class="btn sign-in" href="" style="margin-right: 20px;">Войти</a>
-                <a class="btn register" href="">Регистрация</a>
+                <a class="btn sign-in" asp-controller="Client" asp-action="Auth" style="margin-right: 20px;">Войти</a>
+                <a class="btn register" asp-controller="Client" asp-action="Registration">Регистрация</a>
             </div>
         </div>
     </header>
