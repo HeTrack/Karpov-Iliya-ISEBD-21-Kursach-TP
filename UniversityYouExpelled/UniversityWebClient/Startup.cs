@@ -31,6 +31,7 @@ namespace UniversityWebClient
             services.AddTransient<IPayLogic, PayLogic>();
             services.AddTransient<IEducationLogic, EducationLogic>();
             services.AddTransient<ICourseLogic, CourseLogic>();
+            services.AddTransient<BackUpAbstractLogic, BackUpLogic>();
             services.AddTransient<ReportLogic>();
         }
 

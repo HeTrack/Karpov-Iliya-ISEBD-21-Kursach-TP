@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UniversityDataBaseImplement.Migrations
 {
-    public partial class AddCompanyMigration : Migration
+    public partial class newmigra : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,7 @@ namespace UniversityDataBaseImplement.Migrations
                     Login = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
                     UserType = table.Column<string>(nullable: false),
-                    BlockStatus = table.Column<int>(nullable: false),
+                    BlockStatus = table.Column<bool>(nullable: false),
                     Phone = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     DateRegister = table.Column<DateTime>(nullable: false)
@@ -121,7 +121,7 @@ namespace UniversityDataBaseImplement.Migrations
                         column: x => x.EducationID,
                         principalTable: "Educations",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -15,7 +15,7 @@ namespace UniversityDataBaseImplement.Models
         [Required]
         public int ClientID { get; set; }
         [Required]
-        public int YearED { get; set; }
+        public int? YearED { get; set; }
         [Required]
         public DateTime DateCreate { get; set; }
         [Required]

@@ -19,7 +19,7 @@ namespace UniversityBusinessLogic.ViewModels
         public string FIO { get; set; }
         [DataMember]
         [DisplayName("Год обучения")]
-        public int YearED { get; set; }
+        public int? YearED { get; set; }
         [DataMember]
         [DisplayName("Дата создания")]
         public DateTime DateCreate { get; set; }

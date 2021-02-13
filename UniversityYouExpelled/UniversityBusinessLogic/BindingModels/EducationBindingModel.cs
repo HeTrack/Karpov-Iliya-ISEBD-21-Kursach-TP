@@ -14,7 +14,7 @@ namespace UniversityBusinessLogic.BindingModels
         [DataMember]
         public int ClientID { get; set; }
         [DataMember]
-        public int YearED { get; set; }
+        public int? YearED { get; set; }
         [DataMember]
         public DateTime DateCreate { get; set; }
         [DataMember]
@@ -22,8 +22,8 @@ namespace UniversityBusinessLogic.BindingModels
         [DataMember]
         public PayStatus PayStatus { get; set; }
         public decimal Remain { get; set; }
-        public int From;
-        public int To;
+        public int? From;
+        public int? To;
         [DataMember]
         public List<EducationCourseBindingModel> EducationCourses { get; set; } 
     }

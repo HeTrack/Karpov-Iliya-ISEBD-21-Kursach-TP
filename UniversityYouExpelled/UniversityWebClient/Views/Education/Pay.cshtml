@@ -3,7 +3,7 @@
 *@
 @model Pay
 <div class="text-left text-info">
-    <h1>Оплатить курс обучения №@ViewBag.Education.Id</h1>
+    <h1>Оплатить курс обучения №@ViewBag.Education.ID</h1>
 </div>
 
 @using (Html.BeginForm())
@@ -12,6 +12,6 @@
 
     <p>Остаток: @ViewBag.Remain</p>
     <p>Сумма: <input type="number" min="1" max="@ViewBag.Remain" name="Model.PaySum" /></p>
-    <input type="hidden" name="Model.EducationId" value="@((int)ViewBag.Education.Id)" />
+    <input type="hidden" name="Model.EducationId" value="@((int)ViewBag.Education.ID)" />
     <button type="submit" class="btn btn-info btn-sm">Оплатить</button>
 }

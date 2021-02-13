@@ -26,8 +26,8 @@ namespace UniversityDataBaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlockStatus")
-                        .HasColumnType("int");
+                    b.Property<bool>("BlockStatus")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("DateRegister")
                         .HasColumnType("datetime2");
@@ -115,7 +115,8 @@ namespace UniversityDataBaseImplement.Migrations
                     b.Property<int>("PayStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearED")
+                    b.Property<int?>("YearED")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");

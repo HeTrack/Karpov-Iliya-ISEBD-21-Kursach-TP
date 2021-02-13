@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true, "", new { @style = "color: red" })
-    <p>Мой год обучения: @ViewBag.User.CourseNum</p>
+    <p>Мой год обучения: @ViewBag.User.Year</p>
     <table class="table">
         <tr>
             <td>Название Курса</td>

@@ -11,16 +11,16 @@ using UniversityWebClient.Models;
 namespace UniversityWebClient.Controllers
 {
     public class CourseController : Controller
-    {   
-            private readonly ICourseLogic _course;
-            public CourseController(ICourseLogic course)
-            {
-                _course = course;
-            }
-            public IActionResult Course()
-            {
-                ViewBag.Courses = _course.Read(null).GroupBy(rec => rec.Year).ToList();
-                return View();
-            }
+    {
+        private readonly ICourseLogic _course;
+        public CourseController(ICourseLogic course)
+        {
+            _course = course;
+        }
+        public IActionResult Course()
+        {
+            ViewBag.Courses = _course.Read(null).Where(rec => rec.Year == Program.Client.Year);
+            return View();
         }
     }
+}

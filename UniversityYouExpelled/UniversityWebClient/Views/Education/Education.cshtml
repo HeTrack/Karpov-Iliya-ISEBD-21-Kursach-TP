@@ -12,21 +12,11 @@
     <h1>Обучения</h1>
 </div>
 <hr />
-<p>
-    <strong>
-        <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="CreateEducation">Сформировать</a>
-        @if (ViewBag.educations.Count != 0)
-        {
-            <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="ChangeEducation">Изменить</a>
-            <a class="btn btn-info btn-sm" asp-area="" asp-controller="education" asp-action="DelEducation">Удалить</a>
-        }
-    </strong>
-</p>
-<hr />
+
 @using (Html.BeginForm())
 {
     <p>
-        Выберите даты для отображения отчета по обучениям и оплатам
+        Выберите год обучения для отображения отчета по обучениям и оплатам
     </p>
     <p>
         От: @Html.EditorFor(model => model.EdFrom)
@@ -44,10 +34,10 @@
 <hr />
 @foreach (var education in ViewBag.educations)
 {
-    <p><strong>Год обучения: @education.YearEd </strong></p>
-    <p>Дата последнего обновления: @education.EdCreate</p>
-    <p>Цена текущего обучения: @education.EdCost ₽</p>
-    <p>Статус оплаты: @education.Status</p>
+    <p><strong>Год обучения: @education.YearED </strong></p>
+    <p>Дата последнего обновления: @education.DateCreate</p>
+    <p>Цена текущего обучения: @education.CostED ₽</p>
+    <p>Статус оплаты: @education.PayStatus</p>
     <p>План обучения:</p>
     <table class="table">
         <tr>
@@ -59,14 +49,14 @@
         @foreach (var course in education.EducationCourses)
         {
             <tr>
-                <td>@course.CourseName</td>
-                <td>@course.LecturerFIO</td>
-                <td>@course.StartCourse</td>
+                <td>@course.Name</td>
+                <td>@course.Lecturer</td>
+                <td>@course.DateStart</td>
                 <td>@course.Cost</td>
             </tr>
         }
     </table>
-    if (education.Status != UniversityBusinessLogic.Enums.PayStatus.Принят && ViewBag.Pays != null)
+    if (education.PayStatus != UniversityBusinessLogic.Enums.PayStatus.Принят && ViewBag.Pays != null)
     {
         <p>Платежи:</p>
         <table class="table">
@@ -76,40 +66,39 @@
             </tr>
             @foreach (var pay in ViewBag.Pays)
             {
-                if (pay.EdicationId == education.Id)
+                if (pay.EducationID == education.ID)
                 {
                     <tr>
-                        <td>@pay.PayDate</td>
-                        <td>@pay.PaySum</td>
+                        <td>@pay.DatePay</td>
+                        <td>@pay.SumPay</td>
                     </tr>
                 }
             }
         </table>
     }
     <hr />
-    if (education.Status == UniversityBusinessLogic.Enums.PayStatus.Оплачен)
+    if (education.PayStatus == UniversityBusinessLogic.Enums.PayStatus.Оплачен)
     {
         <p>Полностью оплачено</p>
         <hr />
     }
     else
     {
-        if (education.Status == UniversityBusinessLogic.Enums.PayStatus.Частично_Оплачен)
+        if (education.PayStatus == UniversityBusinessLogic.Enums.PayStatus.Частично_Оплачен)
         {
             <p>К оплате: @education.Remain</p>
             <hr />
 
         }
         <p>
-            <a href="/Education/Pay/@education.Id">Оплатить</a>
+            <a href="/Education/Pay/@education.ID">Оплатить</a>
         </p>
     }
     <p>
-        <a href="/Education/SendWordReport/@education.Id">Отправить список курсов в формате .docx</a>
+        <a href="/Education/SendWordReport/@education.ID">Отправить список курсов в формате .docx</a>
     </p>
     <p>
-        <a href="/Education/SendExcelReport/@education.Id">Отправить список курсов в формате .xslx</a>
+        <a href="/Education/SendExcelReport/@education.ID">Отправить список курсов в формате .xslx</a>
     </p>
     <hr />
-
 }

@@ -15,7 +15,7 @@ namespace UniversityWebClient.Models
         public string Login { get; set; }
         public string Password { get; set; }
         public string UserType { get; set; }
-        public BlockStatus BlockStatus { get; set; }
+        public int BlockStatus { get; set; }
         public string Phone { get; set; }
         public DateTime DateRegister { get; set; }    
     }

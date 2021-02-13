@@ -49,7 +49,7 @@ namespace UniversityBusinessLogic.BusinessLogic
         }
         public void SaveEducationPaysToPdfFile(string fileName, EducationBindingModel education, string email)
         {
-            string title = "Список обучений по курсам " + education.YearED.ToString() + " по " + education.YearED.ToString();
+            string title = "Список обучений с оплатами с " + education.From.ToString() + " по " + education.To.ToString() + " год ";
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = fileName,

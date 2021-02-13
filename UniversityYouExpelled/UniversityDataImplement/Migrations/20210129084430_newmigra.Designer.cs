@@ -10,8 +10,8 @@ using UniversityDataBaseImplement;
 namespace UniversityDataBaseImplement.Migrations
 {
     [DbContext(typeof(UniversityDatabase))]
-    [Migration("20210128194855_AddCompanyMigration")]
-    partial class AddCompanyMigration
+    [Migration("20210129084430_newmigra")]
+    partial class newmigra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,8 @@ namespace UniversityDataBaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlockStatus")
-                        .HasColumnType("int");
+                    b.Property<bool>("BlockStatus")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("DateRegister")
                         .HasColumnType("datetime2");
@@ -117,7 +117,8 @@ namespace UniversityDataBaseImplement.Migrations
                     b.Property<int>("PayStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearED")
+                    b.Property<int?>("YearED")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("ID");

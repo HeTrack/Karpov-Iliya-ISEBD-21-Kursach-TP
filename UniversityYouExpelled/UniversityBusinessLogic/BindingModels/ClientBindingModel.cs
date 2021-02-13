@@ -22,7 +22,7 @@ namespace UniversityBusinessLogic.BindingModels
         [DataMember]
         public string UserType { get; set; }
         [DataMember]
-        public BlockStatus BlockStatus {get; set;}
+        public int BlockStatus {get; set;}
         [DataMember]
         public string Phone { get; set; }
         [DataMember]

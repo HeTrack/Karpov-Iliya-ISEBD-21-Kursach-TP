@@ -28,7 +28,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                 var coursesLabel = section.AddParagraph("Курсы:");
                 coursesLabel.Style = "NormalTitle";
                 var courseTable = document.LastSection.AddTable();
-                List<string> headerWidths = new List<string> { "1cm", "3cm", "2cm", "3cm", "3cm", "3cm", "2,5cm" };
+                List<string> headerWidths = new List<string> { "1cm", "3,5cm", "4cm", "3cm", "2cm", "2cm", "2cm" };
                 foreach (var elem in headerWidths)
                 {
                     courseTable.AddColumn(elem);
@@ -46,7 +46,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                     CreateRow(new PdfRowParameters
                     {
                         Table = courseTable,
-                        Texts = new List<string> { i.ToString(), course.Name, course.Lecturer, course.DateStart.ToString(), course.Cost.ToString() },
+                        Texts = new List<string> { i.ToString(), course.Name, course.Lecturer, course.DateStart.ToShortDateString(), course.Cost.ToString() },
                         Style = "Normal",
                         ParagraphAlignment = ParagraphAlignment.Left
                     });

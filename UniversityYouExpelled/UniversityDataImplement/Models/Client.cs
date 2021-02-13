@@ -23,7 +23,7 @@ namespace UniversityDataBaseImplement.Models
         [Required]
         public string UserType { get; set; }
         [Required]
-        public BlockStatus BlockStatus { get; set; }
+        public int BlockStatus { get; set; }
         [Required]
         public string Phone { get; set; }
         [Required]

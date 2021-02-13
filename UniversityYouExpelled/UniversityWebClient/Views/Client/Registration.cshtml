@@ -4,10 +4,30 @@
     ViewData["Title"] = "Регистрация";
 }
 
-<h1>Регистрация</h1>
-<hr />
+<head>
+    <link rel="stylesheet" href="/css/test.css">
+</head>
+<body style="margin: 0; font-family: Roboto,San Francisco,Helvetica Neue,Helvetica,Arial; font-weight: 400; font-size: 15px; line-height: 24px;">
+    <header class="header home-page-header">
+        <div class="header-container">
+            <div class="col">
+                <a class="logo home-page-header" href="/">
+                    <i class="fas fa-user-graduate" aria-hidden="true"></i>AllExpelledUniversity
+                </a>
+            </div>
+            <div class="col">
+                <span class="total-users">Отчислено уже 10 925 человек</span>
+                <a class="btn sign-in" asp-controller="Client" asp-action="Auth" style="margin-right: 20px;">Войти</a>
+                <a class="btn register" asp-controller="Client" asp-action="Registration">Регистрация</a>
+            </div>
+        </div>
+    </header>
+    <div class="text-center" style="color: darkturquoise;">
+        <h1 class="display-4">Регистрация</h1>
+    </div>
+</body>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" style="margin: 0 auto">
         <form asp-action="Registration">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -42,11 +62,6 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

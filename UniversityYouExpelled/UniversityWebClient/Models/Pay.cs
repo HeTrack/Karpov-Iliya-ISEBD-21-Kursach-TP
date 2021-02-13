@@ -10,6 +10,7 @@ namespace UniversityWebClient.Models
     {
         [Required]
         public decimal PaySum { get; set; }
-        public int EducationId { get; set; }
+        public int EducationID { get; set; }
+        public int CourseID { get; set; }
     }
 }

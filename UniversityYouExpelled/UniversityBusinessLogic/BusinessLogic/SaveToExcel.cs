@@ -135,7 +135,7 @@ namespace UniversityBusinessLogic.BusinessLogic
                         ShareStringPart = shareStringPart,
                         ColumnName = "D",
                         RowIndex = i + 2,
-                        Text = course.DateStart.ToString(),
+                        Text = course.DateStart.ToShortDateString(),
                         StyleIndex = 0U
                     });
                     InsertCellInWorksheet(new ExcelCellParameters

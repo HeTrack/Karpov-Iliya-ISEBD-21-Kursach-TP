@@ -7,6 +7,7 @@ namespace UniversityWebClient.Models
 {
     public class EducationCourses
     {
+        public int CourseID { get; set; }
         public string  CourseName { get; set; }
         public decimal Cost { get; set; }
         public string LecturerFIO { get; set; }

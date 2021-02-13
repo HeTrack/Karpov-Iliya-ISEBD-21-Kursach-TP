@@ -29,7 +29,7 @@ namespace UniversityBusinessLogic.ViewModels
         public string UserType { get; set; }
         [DataMember]
         [DisplayName("Статус Блокировки")]
-        public BlockStatus BlockStatus { get; set; }
+        public int BlockStatus { get; set; }
         [DataMember]
         [DisplayName("Номер телефона")]
         public string Phone { get; set; }

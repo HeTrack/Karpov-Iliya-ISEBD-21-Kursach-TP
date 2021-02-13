@@ -17,7 +17,7 @@ namespace UniversityWebClient.Controllers
         private readonly int passwordMinLength = 6;
         private readonly int passwordMaxLength = 20;
         private readonly int loginMinLength = 1;
-        private readonly int loginMaxLength = 50;
+        private readonly int loginMaxLength = 20;
         public ClientController(IClientLogic clientLogic)
         {
             this.clientLogic = clientLogic;
@@ -45,9 +45,10 @@ namespace UniversityWebClient.Controllers
                 ModelState.AddModelError("", "Вы ввели неверный пароль, либо пользователь не найден");
                 return View(client);
             }
-            if (clientView.UserType == "Аdmin")
-            {
-                return RedirectToAction("AdminMain", "Client");
+            Program.Client = clientView;
+            if (clientView.UserType.ToString() == "Admin")
+            {              
+                return RedirectToAction("Index", "Admin");
             }
             else
             {
@@ -136,7 +137,7 @@ namespace UniversityWebClient.Controllers
                 Login = newClient.Login,
                 Password = newClient.Password,
                 UserType = "Client",
-                BlockStatus = BlockStatus.Активный,
+                BlockStatus = 0,
                 Phone = newClient.Phone,
                 Email = newClient.Email,
                 DateRegister = DateTime.Now
